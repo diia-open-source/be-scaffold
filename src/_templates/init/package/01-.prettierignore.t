@@ -1,0 +1,5 @@
+---
+to:  <%= packageName %>/.prettierignore
+---
+
+dist

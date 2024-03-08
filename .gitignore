@@ -1,0 +1,7 @@
+# by default (local development) generated project has this name
+generation-result
+
+node_modules
+dist
+*.log
+.npmrc

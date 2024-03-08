@@ -1,0 +1,7 @@
+---
+to: <%= scriptRunnerPath %>
+---
+
+---
+sh: ""
+---

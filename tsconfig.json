@@ -1,0 +1,11 @@
+{
+    "extends": "@diia-inhouse/configs/tsconfig",
+    "compilerOptions": {
+        "outDir": "dist",
+        "baseUrl": ".",
+        "declaration": false,
+        "sourceMap": true,
+        "strict": true
+    },
+    "include": ["./src/**/*.ts"]
+}
