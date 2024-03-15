@@ -1,6 +1,6 @@
 {
     "name": "@diia-inhouse/scaffold",
-    "version": "2.8.0",
+    "version": "2.8.1",
     "main": "dist/index.js",
     "license": "SEE LICENCE IN LICENCE.md",
     "repository": "https://github.com/diia-open-source/be-scaffold.git",

@@ -26,7 +26,7 @@ This repository contains the package which provides capabilities to generate cod
 Example:
 
 ```
-git clone https://github.com/diia-open-source/scaffold.git
+git clone https://github.com/diia-open-source/be-scaffold.git scaffold
 ```
 
 ---
