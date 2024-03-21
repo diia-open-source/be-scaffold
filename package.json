@@ -31,12 +31,14 @@
         "lodash": "4.17.21"
     },
     "devDependencies": {
-        "@diia-inhouse/configs": "1.26.3",
-        "@diia-inhouse/eslint-config": "3.4.0",
-        "@diia-inhouse/types": "4.25.0",
+        "@diia-inhouse/configs": "^1.26.3",
+        "@diia-inhouse/eslint-config": "^3.4.0",
+        "@diia-inhouse/types": "^5.0.0",
         "@types/lodash": "4.14.201",
         "copyfiles": "2.4.1",
-        "protobufjs": "7.2.5"
+        "protobufjs": "7.2.5",
+        "typescript": "5.2.2",
+        "type-fest": "4.8.1"
     },
     "release": {
         "extends": "@diia-inhouse/configs/dist/semantic-release/package",
