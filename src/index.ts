@@ -1,4 +1,4 @@
-import path from 'path'
+import path from 'node:path'
 
 import { Logger, runner } from 'hygen'
 
@@ -13,7 +13,7 @@ async function main(): Promise<void> {
         exec: (action) => shExecutor(action),
         cwd: process.cwd(),
         templates: defaultTemplates,
-        debug: !!process.env.DEBUG,
+        debug: Boolean(process.env.DEBUG),
         helpers,
     })
 }

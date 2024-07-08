@@ -2,4 +2,4 @@
 to:  <%= testPath %>
 ---
 
-<%- include(sharedTemplatePath, {name, relativeInterfacePath, relateActionPathFromTest}) %>
+<%- include(sharedTemplatePath, {name, relateActionPathFromTest}) %>

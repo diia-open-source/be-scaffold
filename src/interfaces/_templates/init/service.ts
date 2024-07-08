@@ -12,5 +12,4 @@ export enum ServiceDeps {
     redis = 'redis',
     external = 'external',
     internal = 'internal',
-    http = 'http',
 }

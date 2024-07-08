@@ -15,8 +15,8 @@ to:  <%= serviceName %>/package.json
         "semantic-release": "semantic-release",
         "lint": "eslint --ext .ts . && prettier --check .",
         "lint-fix": "eslint --ext .ts --fix && prettier --write .",
-        "lint:lockfile": "lockfile-lint --path package-lock.json --allowed-hosts registry.npmjs.org --validate-https",
-        "test": "jest",
+        "lint:lockfile": "lockfile-lint --path package-lock.json --allowed-hosts registry.npmjs.org gitlab.diia.org.ua --validate-https",
+        "test": "NODE_OPTIONS=\"$NODE_OPTIONS --experimental-vm-modules\" jest",
         "test:integration": "npm run test --selectProjects integration --",
         <%if (h.isOptionSelected(selectedOptions, 'database')) {%>
         "migrate-deploy": "npm run migrate up",
@@ -33,6 +33,9 @@ to:  <%= serviceName %>/package.json
     "engines": {
         "node": ">=18"
     },
+    "files": [
+        "dist"
+    ],
     "_moduleAliases": {
         "@services": "dist/services",
         "@interfaces": "dist/interfaces",

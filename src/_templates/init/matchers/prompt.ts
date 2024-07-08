@@ -1,5 +1,5 @@
-import fs from 'fs'
-import path from 'path'
+import fs from 'node:fs'
+import path from 'node:path'
 
 import chalk from 'chalk'
 
@@ -19,9 +19,12 @@ export default {
             return fs.existsSync(matcherPath)
         })
 
-        if (existingMatchers.length) {
+        if (existingMatchers.length > 0) {
             console.log('\n')
-            existingMatchers.forEach((projectJestType) => console.log(chalk.red.bold(`${projectJestType} matchers already exists!\r`)))
+            for (const projectJestType of existingMatchers) {
+                console.log(chalk.red.bold(`${projectJestType} matchers already exists!\r`))
+            }
+
             throw new Error('Matchers are already initialized')
         }
 

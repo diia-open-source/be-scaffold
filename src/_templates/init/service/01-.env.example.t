@@ -2,7 +2,7 @@
 to:  <%= serviceName %>/.env.example
 ---
 NODE_ENV=local
-LOG_LEVEL=debug
+LOG_LEVEL=info
 
 TRANSPORT_TYPE=Redis
 TRANSPORT_OPTIONS={"host":"localhost","port":"6379"}
@@ -55,5 +55,6 @@ HEALTH_CHECK_IS_ENABLED=false
 HEALTH_CHECK_IS_PORT=4545
 
 GRPC_SERVER_ENABLED=true
+GRPC_REFLECTION_ENABLED=true
 GRPC_SERVICES=["ua.gov.diia.<%= h.changeCase.pascalCase(serviceName).toLowerCase() %>.<%= h.changeCase.pascalCase(serviceName) %>"]
 GRPC_SERVER_PORT=5<%= Math.floor(Math.random() * (999 - 100) + 100) %>

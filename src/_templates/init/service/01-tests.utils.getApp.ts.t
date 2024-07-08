@@ -2,12 +2,7 @@
 to:  <%= serviceName %>/tests/utils/getApp.ts
 ---
 
-import { asClass } from 'awilix'
-
-import { Application, GrpcService, MoleculerService, ServiceContext, ServiceOperator } from '@diia-inhouse/diia-app'
-
-import { mockClass } from '@diia-inhouse/test'
-import { ServiceName } from '@diia-inhouse/types'
+import { Application, ServiceContext, ServiceOperator } from '@diia-inhouse/diia-app'
 
 import config from '@src/config'
 
@@ -17,15 +12,15 @@ import deps from '@tests/utils/getDeps'
 import { AppConfig } from '@interfaces/config'
 import { AppDeps } from '@interfaces/deps'
 
-export function getApp(): ServiceOperator<AppConfig, AppDeps & TestDeps> {
-    const app = new Application<ServiceContext<AppConfig, AppDeps & TestDeps>>(ServiceName.<%= h.changeCase.pascal(serviceName) %>)
-        .setConfig(config)
-        .setDeps(deps)
-        .overrideDeps({
-            moleculer: asClass(mockClass(MoleculerService)).singleton(),
-            grpcService: asClass(mockClass(GrpcService)).singleton(),
-        })
-        .initialize()
+export async function getApp(): Promise<ServiceOperator<AppConfig, AppDeps & TestDeps>> {
+    const app = new Application<ServiceContext<AppConfig, AppDeps & TestDeps>>('<%= h.changeCase.pascal(serviceName) %>')
 
-    return app
+    await app.setConfig(config)
+    await app.setDeps(deps)
+
+    const appOperator = await app.initialize()
+
+    await appOperator.start()
+
+    return appOperator
 }

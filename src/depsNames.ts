@@ -11,7 +11,7 @@ const devDeps = [
     'madge',
     'prettier',
     'rimraf',
-    'semantic-release',
+    'semantic-release@21.1.2',
     'ts-node',
     'ts-patch',
     'typescript',

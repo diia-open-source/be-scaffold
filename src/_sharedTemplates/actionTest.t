@@ -1,16 +1,21 @@
+import TestKit from '@diia-inhouse/test'
+
 import <%= h.changeCase.pascal(name) %>Action from '<%= relateActionPathFromTest %>'
 
 import { getApp } from '@tests/utils/getApp'
 
-import { ActionResult } from '<%= relativeInterfacePath %>'
+import { <%= h.changeCase.pascal(name) %>Res } from '@src/generated'
 
 describe(`Action ${<%= h.changeCase.pascal(name) %>Action.name}`, () => {
-    const app = getApp()
-    const <%= name %>Action = app.container.build(<%= h.changeCase.pascal(name) %>Action)
-    const testKit = app.container.resolve('testKit')
+    let app: Awaited<ReturnType<typeof getApp>>
+
+    let action: <%= h.changeCase.pascal(name) %>Action
+
+    const testKit = new TestKit()
 
     beforeAll(async () => {
-        await app.start()
+        app = await getApp()
+        action = app.container.build(<%= h.changeCase.pascal(name) %>Action)
     })
 
     afterAll(async () => {
@@ -23,9 +28,9 @@ describe(`Action ${<%= h.changeCase.pascal(name) %>Action.name}`, () => {
         const session = testKit.session.getUserSession()
 
         // Act
-        const result = await <%= name %>Action.handler({session, headers, params: {}})
+        const result = await action.handler({session, headers, params: {}})
 
         // Assert
-        expect(result).toEqual<ActionResult>({})
+        expect(result).toEqual<<%= h.changeCase.pascal(name) %>Res>({})
     })
 })

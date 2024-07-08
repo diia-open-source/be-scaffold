@@ -21,7 +21,9 @@ to:  <%= packageName %>/package.json
     "lint": "eslint --ext .ts . && prettier --check .",
     "lint-fix": "eslint --ext .ts --fix && prettier --write .",
     "test": "jest",
-    "test:unit": "npm run test --selectProjects unit"
+    "test:unit": "npm run test --selectProjects unit",
+    "find-circulars": "madge --circular --extensions ts ./",
+    "lint:lockfile": "lockfile-lint --path package-lock.json --allowed-hosts registry.npmjs.org gitlab.diia.org.ua --validate-https"
   },
   "files": ["dist"],
   "keywords": [],

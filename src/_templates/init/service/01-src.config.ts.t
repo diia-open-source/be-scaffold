@@ -2,10 +2,9 @@
 to:  <%= serviceName %>/src/config.ts
 ---
 
-import { BalancingStrategy, MetricsConfig, TransporterConfig } from '@diia-inhouse/diia-app'
+import { BaseConfig } from '@diia-inhouse/diia-app'
 
 import { EnvService } from '@diia-inhouse/env'
-import { HealthCheckConfig } from '@diia-inhouse/healthcheck'
 
 <%if (h.isOptionSelected(selectedOptions, 'database')) {%>
 import { AppDbConfig, ReplicaSetNodeConfig } from '@diia-inhouse/db'
@@ -23,27 +22,26 @@ import {
     QueueConfig,
     ScheduledTaskQueueName,
 } from '@diia-inhouse/diia-queue'
-import { ServiceName } from '@diia-inhouse/types'
 <%}%>
 
 // eslint-disable-next-line @typescript-eslint/explicit-function-return-type
-export default (envService: EnvService <%= h.isOptionSelected(selectedOptions, ['internal', 'external']) ? ", serviceName: ServiceName" : '' %>) => ({
-    transporter: <TransporterConfig>{
+export default async (envService: EnvService <%= h.isOptionSelected(selectedOptions, ['internal', 'external']) ? ", serviceName: string" : '' %>) => ({
+    transporter: {
         type: envService.getVar('TRANSPORT_TYPE'),
         options: envService.getVar('TRANSPORT_OPTIONS', 'object', {}),
     },
 
-    balancing: <BalancingStrategy>{
+    balancing: {
         strategy: envService.getVar('BALANCING_STRATEGY_NAME', 'string'),
         strategyOptions: envService.getVar('BALANCING_STRATEGY_OPTIONS', 'object', {}),
     },
 
-    healthCheck: <HealthCheckConfig>{
+    healthCheck: {
         isEnabled: envService.getVar('HEALTH_CHECK_IS_ENABLED', 'boolean'),
-        port: envService.getVar('HEALTH_CHECK_IS_PORT', 'number', 3000),
+        port: envService.getVar('HEALTH_CHECK_IS_PORT', 'number', 4545),
     },
 
-    metrics: <MetricsConfig>{
+    metrics: {
         moleculer: {
             prometheus: {
                 isEnabled: envService.getVar('METRICS_MOLECULER_PROMETHEUS_IS_ENABLED', 'boolean', true),
@@ -64,14 +62,22 @@ export default (envService: EnvService <%= h.isOptionSelected(selectedOptions, [
         },
     },
 
+    grpcServer: {
+        isEnabled: envService.getVar('GRPC_SERVER_ENABLED', 'boolean', false),
+        port: envService.getVar('GRPC_SERVER_PORT', 'number', 5000),
+        services: envService.getVar('GRPC_SERVICES', 'object'),
+        isReflectionEnabled: envService.getVar('GRPC_REFLECTION_ENABLED', 'boolean', false),
+        maxReceiveMessageLength: envService.getVar('GRPC_SERVER_MAX_RECEIVE_MESSAGE_LENGTH', 'number', 1024 * 1024 * 4),
+    },
+
     grpc: {},
 
     <%if (h.isOptionSelected(selectedOptions, 'database')) {%>
-        db: <AppDbConfig>{
+        db: {
             database: envService.getVar('MONGO_DATABASE', 'string'),
             replicaSet: envService.getVar('MONGO_REPLICA_SET', 'string'),
-            user: envService.getVar('MONGO_USER', 'string'),
-            password: envService.getVar('MONGO_PASSWORD', 'string'),
+            user: await envService.getSecret('MONGO_USER', { accessor: 'username', nullable: true }),
+            password: await envService.getSecret('MONGO_PASSWORD', { accessor: 'password', nullable: true }),
             authSource: envService.getVar('MONGO_AUTH_SOURCE', 'string'),
             port: envService.getVar('MONGO_PORT', 'number'),
             replicaSetNodes: envService
@@ -87,7 +93,7 @@ export default (envService: EnvService <%= h.isOptionSelected(selectedOptions, [
     <%}%>
 
     <%if (h.isOptionSelected(selectedOptions, 'external')) {%>
-        redis: <RedisConfig>{
+        redis: {
             readWrite: envService.getVar('REDIS_READ_WRITE_OPTIONS', 'object'),
 
             readOnly: envService.getVar('REDIS_READ_ONLY_OPTIONS', 'object'),
@@ -95,7 +101,7 @@ export default (envService: EnvService <%= h.isOptionSelected(selectedOptions, [
     <%}%>
 
     <%if (h.isOptionSelected(selectedOptions, 'redis')) {%>
-        store: <RedisConfig>{
+        store: {
             readWrite: envService.getVar('STORE_READ_WRITE_OPTIONS', 'object'),
 
             readOnly: envService.getVar('STORE_READ_ONLY_OPTIONS', 'object'),
@@ -103,14 +109,14 @@ export default (envService: EnvService <%= h.isOptionSelected(selectedOptions, [
     <%}%>
 
     <%if (h.isOptionSelected(selectedOptions, ['internal', 'external'])) {%>
-    rabbit: <QueueConnectionConfig>{
+    rabbit: {
         <%if (h.isOptionSelected(selectedOptions, 'internal')) {%>
-        [QueueConnectionType.Internal]: <InternalQueueConfig>{
+        [QueueConnectionType.Internal]: {
                 connection: {
                     hostname: envService.getVar('RABBIT_HOST', 'string'),
                     port: envService.getVar('RABBIT_PORT', 'number'),
-                    username: envService.getVar('RABBIT_USERNAME', 'string'),
-                    password: envService.getVar('RABBIT_PASSWORD', 'string'),
+                    username: await envService.getSecret('RABBIT_USERNAME', { accessor: 'username' }),
+                    password: await envService.getSecret('RABBIT_PASSWORD', { accessor: 'password' }),
                     heartbeat: envService.getVar('RABBIT_HEARTBEAT', 'number'),
                 },
                 socketOptions: {
@@ -121,7 +127,7 @@ export default (envService: EnvService <%= h.isOptionSelected(selectedOptions, [
                 reconnectOptions: {
                     reconnectEnabled: true,
                 },
-                listenerOptions: <ListenerOptions>{
+                listenerOptions: {
                     prefetchCount: envService.getVar('RABBIT_QUEUE_PREFETCH_COUNT', 'number', 10),
                 },
                 // Uncomment if listening to scheduled tasks needed
@@ -131,12 +137,12 @@ export default (envService: EnvService <%= h.isOptionSelected(selectedOptions, [
             },
         <%}%>
         <%if (h.isOptionSelected(selectedOptions, 'external')) {%>
-        [QueueConnectionType.External]: <QueueConfig>{
+        [QueueConnectionType.External]: {
             connection: {
                 hostname: envService.getVar('EXTERNAL_RABBIT_HOST', 'string'),
                 port: envService.getVar('EXTERNAL_RABBIT_PORT', 'number'),
-                username: envService.getVar('EXTERNAL_RABBIT_USERNAME', 'string'),
-                password: envService.getVar('EXTERNAL_RABBIT_PASSWORD', 'string'),
+                username: await envService.getSecret('EXTERNAL_RABBIT_USERNAME', { accessor: 'username' }),
+                password: await envService.getSecret('EXTERNAL_RABBIT_PASSWORD', { accessor: 'password' }),
                 heartbeat: envService.getVar('EXTERNAL_RABBIT_HEARTBEAT', 'number'),
             },
             socketOptions: {
@@ -147,7 +153,7 @@ export default (envService: EnvService <%= h.isOptionSelected(selectedOptions, [
             reconnectOptions: {
                 reconnectEnabled: true,
             },
-            listenerOptions: <ListenerOptions>{
+            listenerOptions: {
                 prefetchCount: envService.getVar('EXTERNAL_RABBIT_QUEUE_PREFETCH_COUNT', 'number', 1),
             },
             assertExchanges: envService.getVar('EXTERNAL_RABBIT_ASSERT_EXCHANGES', 'boolean'),
@@ -158,4 +164,4 @@ export default (envService: EnvService <%= h.isOptionSelected(selectedOptions, [
         <%}%>
     },
     <%}%>
-})
+}) satisfies BaseConfig & Record<string, unknown>

@@ -15,8 +15,7 @@ export default {
         const { serviceName } = await prompter.prompt({
             type: 'input',
             name: 'serviceName',
-            message:
-                "What's your new service name (e.g. super-gen)? Make sure new service is added to the ServiceName enum in the types package",
+            message: "What's your new service name (e.g. criminal-cert-service)?",
             required: true,
         })
 
@@ -32,7 +31,6 @@ export default {
             choices,
         })
 
-        console.log(chalk.red.bold('\n!!! REMINDER !!!\r'))
         console.log(chalk.red.bold("Don't forget to add charts and envs to the infra repo manually\r"))
 
         const { devDeps, deps } = serviceDependencies

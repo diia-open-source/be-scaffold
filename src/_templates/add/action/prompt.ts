@@ -1,13 +1,9 @@
-import fs from 'fs'
-import path from 'path'
-
-import { SessionType } from '@diia-inhouse/types'
+import fs from 'node:fs'
+import path from 'node:path'
 
 import { Prompt } from '../../../interfaces'
 import { Answers } from '../../../interfaces/_templates/add/action'
 import { promptAutoComplete, promptYesNoSelect } from '../../../prompt'
-
-import { mapSessionTypeToActionArguments } from './dict'
 
 const ROOT_ACTION = '.'
 const NEW_FOLDER = 'new-folder'
@@ -66,16 +62,13 @@ export default {
                 required: true,
             })
 
-            actionFolder = newFolderName !== normalizedVersion ? path.join(normalizedVersion, newFolderName) : newFolderName
+            actionFolder = newFolderName === normalizedVersion ? newFolderName : path.join(normalizedVersion, newFolderName)
         }
 
         const newActionPath =
             actionFolder === ROOT_ACTION ? path.join(normalizedVersion, actionName) : path.join(normalizedVersion, actionFolder, actionName)
 
         const finalActionPath = path.resolve(process.cwd(), 'src/actions', `${newActionPath}.ts`)
-        const finalInterfacePath = path.resolve(process.cwd(), 'src/interfaces/actions', `${newActionPath}.ts`)
-
-        const relativeInterfacePath = path.join('@interfaces/actions', newActionPath)
 
         const testPath = path.resolve(process.cwd(), 'tests/integration/actions/', `${newActionPath}.spec.ts`)
         const relateActionPathFromTest = path.join('@src/actions', newActionPath)
@@ -84,23 +77,11 @@ export default {
             message: 'Do you need validation?',
         })
 
-        const sessionType = await promptAutoComplete<SessionType>({
-            name: 'sessionType',
-            message: 'Pick SessionType for current action',
-            choices: Object.keys(SessionType),
-        })
-
-        const inheritedActionInterface = mapSessionTypeToActionArguments[sessionType]
-
         return {
             name: actionName,
             version,
             actionPath: finalActionPath,
-            interfacePath: finalInterfacePath,
-            relativeInterfacePath,
             isActionWithValidation,
-            inheritedActionInterface,
-            sessionType,
             testPath,
             relateActionPathFromTest,
         }

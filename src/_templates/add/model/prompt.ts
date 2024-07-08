@@ -1,4 +1,4 @@
-import path from 'path'
+import path from 'node:path'
 
 import { Prompt } from '../../../interfaces'
 import { Answers } from '../../../interfaces/_templates/add/model'

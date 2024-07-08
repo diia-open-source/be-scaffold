@@ -1,3 +1,3 @@
 ---
-sh: "npx prettier --write <%= actionPath %> <%= interfacePath %> <%= testPath %>"
+sh: "npx prettier --write <%= actionPath %> <%= testPath %>"
 ---
