@@ -18,8 +18,7 @@ to:  <%= serviceName %>/tsconfig.json
             "@actions/*": ["src/actions/*"],
             "@src/*": ["src/*"],
             "@tests/*": ["tests/*"]
-        },
-        "plugins": [{ "transform": "typescript-transform-paths" }, { "transform": "typescript-transform-paths", "afterDeclarations": true }]
+        }
     },
     "include": ["src/**/*", "tests/jest.d.ts"]
 }

@@ -14,8 +14,7 @@ to:  <%= packageName %>/tsconfig.json
             "@interfaces/*": ["src/interfaces/*"],
             "@src/*": ["src/*"],
             "@tests/*": ["tests/*"]
-        },
-        "plugins": [{ "transform": "typescript-transform-paths" }, { "transform": "typescript-transform-paths", "afterDeclarations": true }]
+        }
     },
     "include": ["src/**/*"],
     "exclude": ["node_modules", "tests"]

@@ -10,7 +10,7 @@ to:  <%= packageName %>/package.json
   "main": "dist/index.js",
   "types": "dist/types/index.d.ts",
   "engines": {
-    "node": ">=18"
+    "node": ">=20"
   },
   "scripts": {
     "build": "tsc",

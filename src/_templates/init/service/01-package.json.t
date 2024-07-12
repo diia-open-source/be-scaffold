@@ -31,7 +31,7 @@ to:  <%= serviceName %>/package.json
     },
     "keywords": [],
     "engines": {
-        "node": ">=18"
+        "node": ">=20"
     },
     "files": [
         "dist"

@@ -3,4 +3,4 @@ to:  <%= serviceName %>/.prettierignore
 ---
 
 dist
-generated
+src/generated
