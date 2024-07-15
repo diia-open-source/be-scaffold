@@ -14,6 +14,7 @@ const devDeps = [
     'semantic-release',
     'ts-node',
     'ts-patch',
+    'ts-proto',
     'typescript',
 ]
 

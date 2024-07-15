@@ -5,10 +5,6 @@ to:  <%= serviceName %>/src/config.ts
 import { BaseConfig } from '@diia-inhouse/diia-app'
 
 import { EnvService } from '@diia-inhouse/env'
-
-<%if (h.isOptionSelected(selectedOptions, 'database')) {%>
-import { AppDbConfig, ReplicaSetNodeConfig } from '@diia-inhouse/db'
-<%}%>
 <%if (h.isOptionSelected(selectedOptions, 'redis')) {%>
 import { RedisConfig } from '@diia-inhouse/redis'
 <%}%>
@@ -78,12 +74,12 @@ export default async (envService: EnvService <%= h.isOptionSelected(selectedOpti
             replicaSet: envService.getVar('MONGO_REPLICA_SET', 'string'),
             user: await envService.getSecret('MONGO_USER', { accessor: 'username', nullable: true }),
             password: await envService.getSecret('MONGO_PASSWORD', { accessor: 'password', nullable: true }),
-            authSource: envService.getVar('MONGO_AUTH_SOURCE', 'string'),
+            authSource: envService.getVar('MONGO_AUTH_SOURCE', 'string', null),
             port: envService.getVar('MONGO_PORT', 'number'),
             replicaSetNodes: envService
                 .getVar('MONGO_HOSTS', 'string')
                 .split(',')
-                .map((replicaHost: string): ReplicaSetNodeConfig => ({ replicaHost })),
+                .map((replicaHost: string) => ({ replicaHost })),
             readPreference: envService.getVar('MONGO_READ_PREFERENCE', 'string'),
             indexes: {
                 sync: envService.getVar('MONGO_INDEXES_SYNC', 'boolean'),
