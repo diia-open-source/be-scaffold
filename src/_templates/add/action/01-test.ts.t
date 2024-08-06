@@ -7,16 +7,16 @@ import <%= h.changeCase.pascal(name) %>Action from '<%= relateActionPathFromTest
 
 import { getApp } from '@tests/utils/getApp'
 
-import { <%= h.changeCase.pascal(name) %>Req, <%= h.changeCase.pascal(name) %>Res } from '@src/generated'
+import { ActionResult } from '<%= relativeInterfacePath %>'
 
 describe(`Action ${<%= h.changeCase.pascal(name) %>Action.name}`, () => {
     let app: Awaited<ReturnType<typeof getApp>>
-    let <%= name %>Action: <%= h.changeCase.pascal(name) %>Action
+    let action: <%= h.changeCase.pascal(name) %>Action
     const testKit = new TestKit()
 
     beforeAll(async () => {
         app = await getApp()
-        <%= name %>Action = app.container.build(<%= h.changeCase.pascal(name) %>Action)
+        action = app.container.build(<%= h.changeCase.pascal(name) %>Action)
     })
 
     afterAll(async () => {
@@ -29,9 +29,9 @@ describe(`Action ${<%= h.changeCase.pascal(name) %>Action.name}`, () => {
         const session = testKit.session.getUserSession()
 
         // Act
-        const result = await <%= name %>Action.handler({session, headers, params: {}})
+        const result = await action.handler({session, headers, params: {}})
 
         // Assert
-        expect(result).toEqual<<%= h.changeCase.pascal(name) %>Res>({})
+        expect(result).toEqual<ActionResult>({})
     })
 })

@@ -4,12 +4,11 @@ to:  <%= serviceName %>/src/actions/v1/getAddResult.ts
 
 import { GrpcAppAction } from '@diia-inhouse/diia-app'
 
-import { ActionContext } from '@diia-inhouse/types'
 import { ValidationSchema } from '@diia-inhouse/validators'
 
-import { GetAddResultReq, GetAddResultRes } from '@src/generated'
+import { ActionResult, Context } from '@interfaces/actions/v1/getAddResult'
 
-export default class GetAddResultAction implements GrpcAppAction<ActionContext<GetAddResultReq>> {
+export default class GetAddResultAction implements GrpcAppAction<Context> {
     readonly name = 'getAddResult'
 
     readonly validationRules: ValidationSchema<GetAddResultReq> = {
@@ -17,7 +16,7 @@ export default class GetAddResultAction implements GrpcAppAction<ActionContext<G
         b: {type: 'number'}
     }
 
-    async handler(args: ActionContext<GetAddResultReq>): Promise<GetAddResultRes> {
+    async handler(args: Context): Promise<ActionResult> {
         const { params: { a, b } } = args
 
         return { result: a + b }

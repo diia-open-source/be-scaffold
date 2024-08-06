@@ -4,19 +4,20 @@ to:  <%= serviceName %>/tests/integration/actions/v1/getAddResult.spec.ts
 
 import TestKit from '@diia-inhouse/test'
 
+import { ActionResult } from '@interfaces/actions/v1/getAddResult'
+
 import GetAddResultAction from '@src/actions/v1/getAddResult'
-import { GetAddResultRes } from '@src/generated'
 
 import { getApp } from '@tests/utils/getApp'
 
 describe(`Action ${GetAddResultAction.name}`, () => {
     let app: Awaited<ReturnType<typeof getApp>>
-    let getAddResult: GetAddResultAction
+    let action: GetAddResultAction
     const testKit = new TestKit()
 
     beforeAll(async () => {
         app = await getApp()
-        getAddResult = app.container.build(GetAddResultAction)
+        action = app.container.build(GetAddResultAction)
     })
 
     afterAll(async () => {
@@ -32,9 +33,9 @@ describe(`Action ${GetAddResultAction.name}`, () => {
         const b = 3;
         
         // Act
-        const result = await getAddResult.handler({ params: { a, b }, session, headers })
+        const result = await action.handler({ params: { a, b }, session, headers })
 
         // Assert
-        expect(result).toEqual<GetAddResultRes>({ result: 5 })
+        expect(result).toEqual<ActionResult>({ result: 5 })
     })
 })

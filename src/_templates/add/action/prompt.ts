@@ -69,6 +69,9 @@ export default {
             actionFolder === ROOT_ACTION ? path.join(normalizedVersion, actionName) : path.join(normalizedVersion, actionFolder, actionName)
 
         const finalActionPath = path.resolve(process.cwd(), 'src/actions', `${newActionPath}.ts`)
+        const finalInterfacePath = path.resolve(process.cwd(), 'src/interfaces/actions', `${newActionPath}.ts`)
+
+        const relativeInterfacePath = path.join('@interfaces/actions', newActionPath)
 
         const testPath = path.resolve(process.cwd(), 'tests/integration/actions/', `${newActionPath}.spec.ts`)
         const relateActionPathFromTest = path.join('@src/actions', newActionPath)
@@ -81,6 +84,8 @@ export default {
             name: actionName,
             version,
             actionPath: finalActionPath,
+            interfacePath: finalInterfacePath,
+            relativeInterfacePath,
             isActionWithValidation,
             testPath,
             relateActionPathFromTest,

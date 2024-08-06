@@ -4,7 +4,7 @@ import <%= h.changeCase.pascal(name) %>Action from '<%= relateActionPathFromTest
 
 import { getApp } from '@tests/utils/getApp'
 
-import { <%= h.changeCase.pascal(name) %>Res } from '@src/generated'
+import { ActionResult } from '<%= relativeInterfacePath %>'
 
 describe(`Action ${<%= h.changeCase.pascal(name) %>Action.name}`, () => {
     let app: Awaited<ReturnType<typeof getApp>>
@@ -31,6 +31,6 @@ describe(`Action ${<%= h.changeCase.pascal(name) %>Action.name}`, () => {
         const result = await action.handler({session, headers, params: {}})
 
         // Assert
-        expect(result).toEqual<<%= h.changeCase.pascal(name) %>Res>({})
+        expect(result).toEqual<ActionResult>({})
     })
 })

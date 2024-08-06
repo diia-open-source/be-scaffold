@@ -42,6 +42,7 @@ export default {
         const actionName = path.basename(actionPath)
 
         const testPath = path.join('tests', 'integration', `${actionPath}.spec.ts`)
+        const relativeInterfacePathFromTest = path.join('@interfaces', actionPath)
         const relateActionPathFromTest = path.join('@src', actionPath)
 
         const result = {
@@ -49,6 +50,7 @@ export default {
 
             testPath,
             name: actionName,
+            relativeInterfacePath: relativeInterfacePathFromTest,
             relateActionPathFromTest,
         }
 
