@@ -6,7 +6,6 @@ export async function shExecutor(command: string): Promise<void> {
     const result = execa.commandSync(command, { shell: true, stdout: process.stdout, stderr: process.stderr })
 
     if (result.exitCode !== 0) {
-        // eslint-disable-next-line no-console
         console.log(result)
 
         throw new Error(`${command} failed`)

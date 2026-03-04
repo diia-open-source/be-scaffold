@@ -12,18 +12,19 @@ to:  <%= serviceName %>/package.json
         "prepare": "ts-patch install -s",
         "build": "rimraf dist/ && mkdir dist && npm run genproto && tsc",
         "start": "node dist/index.js",
-        "semantic-release": "semantic-release",
-        "lint": "eslint --ext .ts . && prettier --check .",
-        "lint-fix": "eslint --ext .ts --fix && prettier --write .",
+        "semantic-release": "semantic-release -e @diia-inhouse/configs/dist/semantic-release/service-stage --debug --ci",
+        "semantic-release-prod": "semantic-release -e @diia-inhouse/configs/dist/semantic-release/service-prod --debug --ci",
+        "lint": "eslint . && prettier --check . && buf format ./proto --diff --exit-code ",
+        "lint-fix": "eslint . --fix && prettier --write . && buf format ./proto --write",
         "lint:lockfile": "lockfile-lint --path package-lock.json --allowed-hosts registry.npmjs.org gitlab.diia.org.ua --validate-https",
-        "test": "NODE_OPTIONS=\"$NODE_OPTIONS --experimental-vm-modules\" jest",
-        "test:integration": "npm run test --selectProjects integration --",
-        <%if (h.isOptionSelected(selectedOptions, 'database')) {%>
-        "migrate-deploy": "npm run migrate up",
-        "migrate-ci": "npm run migrate up",
+        "pretest": "npm run genproto -- --generateClient=true",
+        "test": "tsc --project tests/tsconfig.json --noEmit && vitest run",
+        "test:watch": "vitest watch",
+        "test:coverage": "vitest run --coverage",
+        <%if (h.isOptionSelected(selectedDependencies, 'database')) {%>
         "migrate-test": "NODE_ENV=test npm run migrate up",
         "migrate": "sh -c 'ts-node --project migrations/tsconfig.json node_modules/.bin/migrate-mongo $0 $1 -f migrate-mongo-config.ts'",
-        "indexes:sync": "MONGO_INDEXES_SYNC=true MONGO_INDEXES_EXIT_AFTER_SYNC=true npm run start",
+        "indexes:sync": "node -r module-alias/register ./node_modules/.bin/diia-db sync-indexes",
         <%}%>
         "find-circulars": "madge --circular --extensions ts ./",
         "scaffold": "scaffold",
@@ -31,7 +32,7 @@ to:  <%= serviceName %>/package.json
     },
     "keywords": [],
     "engines": {
-        "node": ">=20"
+        "node": ">=22"
     },
     "files": [
         "dist"
@@ -43,29 +44,14 @@ to:  <%= serviceName %>/package.json
         "@src": "dist",
         "@tests": "tests"
     },
-    "jest": {
-        "preset": "@diia-inhouse/configs/dist/jest"
-    },
     "commitlint": {
         "extends": "@diia-inhouse/configs/dist/commitlint"
-    },
-    "eslintConfig": {
-        "extends": "@diia-inhouse/eslint-config",
-        "parserOptions": {
-            "project": [
-                "./tsconfig.json",
-                "./tests/tsconfig.json"
-                <%if (h.isOptionSelected(selectedOptions, 'database')) {%>
-                ,"./migrations/tsconfig.json"
-                <%}%>
-            ]
-        }
-    },
-    "release": {
-        "extends": "@diia-inhouse/configs/dist/semantic-release/service"
     },
     "prettier": "@diia-inhouse/eslint-config/prettier",
     "madge": {
         "tsConfig": "./tsconfig.json"
+    },
+    "overrides": {
+        "protobufjs": "7.2.5"
     }
 }

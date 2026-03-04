@@ -1,4 +1,5 @@
 export interface Answers {
+    sharedTemplatePath: string
     name: string
     version: string
     actionPath: string

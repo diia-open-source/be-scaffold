@@ -10,7 +10,8 @@ async function walker(): Promise<string[]> {
     const rootActionsFolderPath = path.resolve(process.cwd(), 'src/actions')
 
     const fn = async (currentFolderPath: string): Promise<void> => {
-        const readdirResult = fs.readdirSync(currentFolderPath, { withFileTypes: true })
+        // eslint-disable-next-line security/detect-non-literal-fs-filename
+        const readdirResult = fs.readdirSync(currentFolderPath, { withFileTypes: true }) // nosemgrep: eslint.detect-non-literal-fs-filename
 
         for (const file of readdirResult.filter((entity) => entity.isFile())) {
             const from = path.resolve(process.cwd(), 'src')

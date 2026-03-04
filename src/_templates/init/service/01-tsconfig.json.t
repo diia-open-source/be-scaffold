@@ -11,7 +11,7 @@ to:  <%= serviceName %>/tsconfig.json
         "paths": {
             "@services/*": ["src/services/*"],
             "@interfaces/*": ["src/interfaces/*"],
-            <%if (h.isOptionSelected(selectedOptions, 'database')) {%>
+            <%if (h.isOptionSelected(selectedDependencies, 'database')) {%>
             "@models/*": ["src/models/*"],
             <%}%>
             "@dataMappers/*": ["src/dataMappers/*"],
@@ -20,5 +20,5 @@ to:  <%= serviceName %>/tsconfig.json
             "@tests/*": ["tests/*"]
         }
     },
-    "include": ["src/**/*", "tests/jest.d.ts"]
+    "include": ["src/**/*"]
 }

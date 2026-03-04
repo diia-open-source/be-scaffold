@@ -7,7 +7,7 @@ import { helpers, shExecutor } from './utils'
 const defaultTemplates = path.resolve(__dirname, './_templates')
 
 async function main(): Promise<void> {
-    runner(process.argv.slice(2), {
+    void runner(process.argv.slice(2), {
         logger: new Logger(console.log.bind(console)),
         createPrompter: () => require('enquirer'),
         exec: (action) => shExecutor(action),
@@ -18,4 +18,4 @@ async function main(): Promise<void> {
     })
 }
 
-main()
+void main()

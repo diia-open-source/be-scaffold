@@ -2,14 +2,14 @@ export interface Answers {
     name: string
     matcherPath: string
     rootMatcherPath: string
-    jestTypesDeclarationPath: string
+    vitestTypesDeclarationPath: string
     tsConfigContent: string
     tsConfigPath: string
     newSetupFilePath?: string
     overrideSetupFilePath?: string
 }
 
-export enum ProjectJestType {
+export enum ProjectTestType {
     Integration = 'integration',
     Unit = 'unit',
 }

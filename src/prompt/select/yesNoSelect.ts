@@ -1,5 +1,4 @@
 import { SelectYesNoParams } from '../../interfaces/prompt/select'
-
 import { promptBaseSelect } from './baseSelect'
 
 const YES = 'yes'

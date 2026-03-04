@@ -1,9 +1,12 @@
 import fs from 'node:fs'
 import path from 'node:path'
 
+import chalk from 'chalk'
+
 import { Prompt } from '../../../interfaces'
 import { Answers } from '../../../interfaces/_templates/add/action'
 import { promptAutoComplete, promptYesNoSelect } from '../../../prompt'
+import { getSharedTemplate } from '../../../utils'
 
 const ROOT_ACTION = '.'
 const NEW_FOLDER = 'new-folder'
@@ -11,15 +14,18 @@ const NEW_FOLDER = 'new-folder'
 function getActionsFolder(versionFolder: string): string[] {
     const actionVersionFolderPath = path.resolve(process.cwd(), 'src/actions', versionFolder)
 
-    const isActionVersionFolderExists = fs.existsSync(actionVersionFolderPath)
+    // eslint-disable-next-line security/detect-non-literal-fs-filename
+    const isActionVersionFolderExists = fs.existsSync(actionVersionFolderPath) // nosemgrep: eslint.detect-non-literal-fs-filename
 
     if (!isActionVersionFolderExists) {
-        fs.mkdirSync(actionVersionFolderPath, { recursive: true })
+        // eslint-disable-next-line security/detect-non-literal-fs-filename
+        fs.mkdirSync(actionVersionFolderPath, { recursive: true }) // nosemgrep: eslint.detect-non-literal-fs-filename
 
         return [ROOT_ACTION, NEW_FOLDER]
     }
 
-    const actionFolders = fs
+    // eslint-disable-next-line security/detect-non-literal-fs-filename
+    const actionFolders = fs // nosemgrep: eslint.detect-non-literal-fs-filename
         .readdirSync(actionVersionFolderPath, { withFileTypes: true })
         .filter((entity) => entity.isDirectory())
         .map((directory) => directory.name)
@@ -46,13 +52,20 @@ export default {
 
         const normalizedVersion = `v${version}`
 
-        let actionFolder = await promptAutoComplete({
+        const actionFolder = await promptAutoComplete({
             name: 'actionFolder',
-            message: `Pick folder where do you want create new action \n 
-        ${ROOT_ACTION}          -> create new action in src/actions \n
-        ${NEW_FOLDER} -> create new folder with your action in src/actions \n`,
+            message:
+                'Pick folder where do you want create new action \n' +
+                chalk.green(`${ROOT_ACTION}          -> create new action in src/actions \n`) +
+                chalk.blue(`${NEW_FOLDER} -> create new folder with your action in src/actions \n`),
             choices: getActionsFolder(normalizedVersion),
         })
+
+        let newActionPath = path.join(normalizedVersion, actionFolder, actionName)
+
+        if (actionFolder === ROOT_ACTION) {
+            newActionPath = path.join(normalizedVersion, actionName)
+        }
 
         if (actionFolder === NEW_FOLDER) {
             const { newFolderName } = await prompter.prompt({
@@ -62,11 +75,8 @@ export default {
                 required: true,
             })
 
-            actionFolder = newFolderName === normalizedVersion ? newFolderName : path.join(normalizedVersion, newFolderName)
+            newActionPath = path.join(normalizedVersion, newFolderName, actionName)
         }
-
-        const newActionPath =
-            actionFolder === ROOT_ACTION ? path.join(normalizedVersion, actionName) : path.join(normalizedVersion, actionFolder, actionName)
 
         const finalActionPath = path.resolve(process.cwd(), 'src/actions', `${newActionPath}.ts`)
         const finalInterfacePath = path.resolve(process.cwd(), 'src/interfaces/actions', `${newActionPath}.ts`)
@@ -81,6 +91,8 @@ export default {
         })
 
         return {
+            sharedTemplatePath: getSharedTemplate('actionTest.t'),
+
             name: actionName,
             version,
             actionPath: finalActionPath,

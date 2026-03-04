@@ -3,18 +3,14 @@ to:  <%= serviceName %>/.gitlab-ci.yml
 ---
 
 variables:
-    CHART_NAME: <%= serviceName %> 
+    CHART_NAME: <%= serviceName.replace(/-service$/, '') %>
     NEW_TEST: 'true'
     RUN_INTEGRATION_TESTS: 'true'
     RUN_UNIT_TESTS: 'false'
-    NODE_PACKAGE_MANAGER: 'npm'
-    CI_BUILD_INSTALLS: protobuf-dev
-    CI_RELEASE_INSTALLS: protobuf-dev
+    TEST_RUNNER: 'vitest'
+    CI_PIPELINE_TYPE: nodeJS-tag
 
 include:
     - project: diia-inhouse/ci
       ref: main
       file: main/node.gitlab-ci.yaml
-    - project: diia-inhouse/ci
-      ref: main
-      file: main/proto.gitlab-ci.yaml

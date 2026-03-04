@@ -1,0 +1,5 @@
+---
+to:  <%= packageName %>/CODEOWNERS
+---
+
+* <%= codeowners %>

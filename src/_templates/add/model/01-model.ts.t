@@ -2,7 +2,7 @@
 to:  <%= modelPath %>
 ---
 
-import { Model, Schema, model, models } from 'mongoose'
+import { Model, Schema, model, models } from '@diia-inhouse/db'
 
 import {
  <%= h.changeCase.pascal(name) %>

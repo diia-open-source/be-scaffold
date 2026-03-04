@@ -3,12 +3,11 @@ to:  <%= serviceName %>/src/index.ts
 ---
 
 import { initTracing } from '@diia-inhouse/diia-app'
+import { utils } from '@diia-inhouse/utils'
 
-const serviceName = '<%= h.changeCase.pascalCase(serviceName) %>'
-
-initTracing(serviceName)
+const nodeTracerProvider = initTracing()
 
 import 'module-alias/register'
 import { bootstrap } from './bootstrap'
 
-bootstrap(serviceName)
+void bootstrap(utils.getServiceName(), nodeTracerProvider)

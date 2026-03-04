@@ -6,10 +6,14 @@ to:  <%= serviceName %>/tests/tsconfig.json
     "extends": "@diia-inhouse/configs/tsconfig",
     "compilerOptions": {
         "baseUrl": "../",
+        "types": ["vite/client", "vitest/globals", "./vitest.d.ts"],
+        "module": "ESNext",
+        "moduleResolution": "Bundler",
+        "isolatedModules": true,
         "paths": {
             "@services/*": ["src/services/*"],
             "@interfaces/*": ["src/interfaces/*"],
-            <%if (h.isOptionSelected(selectedOptions, 'database')) {%>
+            <%if (h.isOptionSelected(selectedDependencies, 'database')) {%>
             "@models/*": ["src/models/*"],
             <%}%>
             "@dataMappers/*": ["src/dataMappers/*"],
@@ -19,5 +23,5 @@ to:  <%= serviceName %>/tests/tsconfig.json
         },
         "noEmit": true
     },
-    "include": ["./**/*"]
+    "include": ["./**/*", "../vitest.config.mts"]
 }

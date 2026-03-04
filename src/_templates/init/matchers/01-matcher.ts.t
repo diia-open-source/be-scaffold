@@ -2,4 +2,4 @@
 to: <%= matcherPath %>
 ---
 
-export function <%= name %>(): unkown {}
+export function <%= name %>(): unknown {}

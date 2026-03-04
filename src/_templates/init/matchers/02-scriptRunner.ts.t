@@ -1,3 +1,3 @@
 ---
-sh: "npx prettier --write <%= tsConfigPath %> <%= matcherPath %> <%= jestTypesDeclarationPath %>"
+sh: "npx prettier --write <%= tsConfigPath %> <%= matcherPath %> <%= vitestTypesDeclarationPath %>"
 ---

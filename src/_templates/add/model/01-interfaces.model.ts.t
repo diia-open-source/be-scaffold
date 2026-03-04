@@ -1,7 +1,7 @@
 ---
 to: <%= interfacePath %>
 ---
-import { Document } from 'mongoose'
+import { Document } from '@diia-inhouse/db'
 
 export interface <%= h.changeCase.pascal(name) %> {}
 

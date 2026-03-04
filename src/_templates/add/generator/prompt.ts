@@ -9,8 +9,8 @@ const NEW_GENERATOR_TYPE = 'new-type'
 
 function getGeneratorTypes(): string[] {
     const generatorsPath = path.resolve(process.cwd(), 'src/_templates')
-
-    const generators = fs
+    // eslint-disable-next-line security/detect-non-literal-fs-filename
+    const generators = fs // nosemgrep: eslint.detect-non-literal-fs-filename
         .readdirSync(generatorsPath, { withFileTypes: true })
         .filter((entity) => entity.isDirectory())
         .map((directory) => directory.name)

@@ -1,15 +1,25 @@
 ---
-to:  <%= serviceName %>/proto/<%= h.changeCase.snakeCase(serviceName) %>.proto
+to:  <%= serviceName %>/proto/<%= h.changeCase.paramCase(serviceName) %>.proto
 ---
 
 syntax = "proto3";
 
 package ua.gov.diia.<%= h.changeCase.pascalCase(serviceName).toLowerCase() %>;
+
+import "google/api/annotations.proto";
+import "google/protobuf/empty.proto";
+
 option java_multiple_files = true;
 option java_package = "ua.gov.diia.<%= h.changeCase.pascalCase(serviceName).toLowerCase() %>";
 
 service <%= h.changeCase.pascalCase(serviceName) %> {
     rpc GetAddResult(GetAddResultReq) returns (GetAddResultRes);
+}
+
+service <%= h.changeCase.pascalCase(serviceName) %>Public {
+  rpc GetPublicResult(google.protobuf.Empty) returns (GetAddResultRes) {
+    option (google.api.http) = {get: "/api/v1/public-service/<%= h.changeCase.snakeCase(serviceName) %>/{param}/data"};
+  }
 }
 
 message GetAddResultReq {
@@ -19,4 +29,8 @@ message GetAddResultReq {
 
 message GetAddResultRes {
     int32 result = 1;
+}
+
+message DesignSystemResponse {
+  
 }

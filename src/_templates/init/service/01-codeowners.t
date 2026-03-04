@@ -1,0 +1,5 @@
+---
+to:  <%= serviceName %>/CODEOWNERS
+---
+
+* <%= codeowners %>
