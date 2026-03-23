@@ -2,11 +2,12 @@
 to:  <%= serviceName %>/eslint.config.mjs
 ---
 
-import diiaConfig from '@diia-inhouse/eslint-config'
+import diiaConfig, { serviceBoundariesConfig } from '@diia-inhouse/eslint-config'
 
 /**  @type {import('eslint').Linter.Config}  */
 export default [
     ...diiaConfig,
+    ...serviceBoundariesConfig,
     {
         ignores: [
             '*.js',
