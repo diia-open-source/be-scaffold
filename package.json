@@ -1,6 +1,6 @@
 {
     "name": "@diia-inhouse/scaffold",
-    "version": "2.53.0",
+    "version": "2.53.1",
     "main": "dist/index.js",
     "engines": {
         "node": ">=22"
@@ -33,7 +33,7 @@
     },
     "devDependencies": {
         "@diia-inhouse/configs": "6.1.1",
-        "@diia-inhouse/eslint-config": "8.4.0",
+        "@diia-inhouse/eslint-config": "8.6.0",
         "@types/lodash": "4.17.24",
         "@types/node": "25.3.3",
         "copyfiles": "2.4.1",
