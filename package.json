@@ -1,6 +1,6 @@
 {
     "name": "@diia-inhouse/scaffold",
-    "version": "2.53.2",
+    "version": "2.53.3",
     "main": "dist/index.js",
     "engines": {
         "node": ">=22"
@@ -29,7 +29,7 @@
         "enquirer": "2.4.1",
         "execa": "5.1.1",
         "hygen": "6.2.11",
-        "lodash": "4.17.23"
+        "lodash": "4.18.1"
     },
     "devDependencies": {
         "@diia-inhouse/configs": "6.1.1",
