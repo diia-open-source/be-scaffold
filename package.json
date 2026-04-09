@@ -1,6 +1,6 @@
 {
     "name": "@diia-inhouse/scaffold",
-    "version": "2.53.4",
+    "version": "2.53.5",
     "main": "dist/index.js",
     "engines": {
         "node": ">=22"
@@ -24,7 +24,7 @@
     ],
     "author": "Diia",
     "dependencies": {
-        "@diia-inhouse/types": "11.6.0",
+        "@diia-inhouse/types": "11.7.0",
         "chalk": "4.1.2",
         "enquirer": "2.4.1",
         "execa": "5.1.1",
@@ -58,6 +58,6 @@
     "madge": {
         "tsConfig": "./tsconfig.json"
     },
-    "repository": "https://github.com/diia-open-source/be-scaffold.git",
+    "repository": "https://github.com/diia-open-source/be-scaffold",
     "license": "SEE LICENCE IN LICENCE.md"
 }
