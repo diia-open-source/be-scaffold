@@ -17,8 +17,7 @@ to:  <%= serviceName %>/package.json
         "lint": "eslint . && prettier --check . && buf format ./proto --diff --exit-code ",
         "lint-fix": "eslint . --fix && prettier --write . && buf format ./proto --write",
         "lint:lockfile": "lockfile-lint --path package-lock.json --allowed-hosts registry.npmjs.org gitlab.diia.org.ua --validate-https",
-        "pretest": "npm run genproto -- --generateClient=true",
-        "test": "tsc --project tests/tsconfig.json --noEmit && vitest run",
+        "test": "npm run genproto -- --generateClient=true && tsc --project tests/tsconfig.json --noEmit && vitest run",
         "test:watch": "vitest watch",
         "test:coverage": "vitest run --coverage",
         <%if (h.isOptionSelected(selectedDependencies, 'database')) {%>
