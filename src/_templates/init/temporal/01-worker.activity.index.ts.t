@@ -2,7 +2,7 @@
 to:  <%= workerRoot %>/activities/index.ts
 ---
 
-import { ExampleActivities } from './activityExample'
+import { ExampleActivities } from './activityExample.js'
 
 export const workerActivities = {
     exampleActivities: ExampleActivities,

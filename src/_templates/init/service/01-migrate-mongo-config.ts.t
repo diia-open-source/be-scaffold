@@ -1,8 +1,10 @@
 ---
 to:  <%= serviceName %>/migrate-mongo-config.ts
 ---
-require('dotenv-flow').config({ silent: true })
+import dotenvFlow from 'dotenv-flow'
 
 import { MongoHelper } from '@diia-inhouse/db'
 
-module.exports = MongoHelper.getMigrateMongoConfig()
+dotenvFlow.config({ silent: true })
+
+export default MongoHelper.getMigrateMongoConfig()

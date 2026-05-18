@@ -5,19 +5,17 @@ to:  <%= packageName %>/tests/tsconfig.json
 {
     "extends": "@diia-inhouse/configs/tsconfig",
     "compilerOptions": {
-        "baseUrl": "../",
         "types": ["vite/client", "vitest/globals"],
         "module": "ESNext",
         "moduleResolution": "Bundler",
         "isolatedModules": true,
         "paths": {
-            "@services/*": ["src/services/*"],
-            "@interfaces/*": ["src/interfaces/*"],
-            "@src/*": ["src/*"],
-            "@tests/*": ["tests/*"]
+            "@src/*": ["../src/*"],
+            "@tests/*": ["./*"]
         },
         "noEmit": true,
-        "strict": true
+        "strict": true,
+        "rootDir": "../"
     },
     "include": ["./**/*", "../vitest.config.mts"]
 }

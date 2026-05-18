@@ -1,5 +1,3 @@
 ---
-sh: "npx prettier --write <%= taskPath %> <% taskInterfacePath %>"
+sh: "npx oxfmt <%= taskPath %> <%= taskInterfacePath %>"
 ---
-
-

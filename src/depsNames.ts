@@ -1,22 +1,31 @@
-const PackageDevDeps = [
+const CommonDevDeps = [
     '@diia-inhouse/configs',
-    '@diia-inhouse/eslint-config',
+    '@diia-inhouse/oxc-config',
     '@diia-inhouse/test',
-    '@diia-inhouse/genproto',
     '@vitest/coverage-v8',
     '@vitest/ui',
-    'eslint',
     'lockfile-lint',
     'madge',
-    'prettier',
+    'oxfmt',
+    'oxlint',
+    'oxlint-tsgolint',
     'rimraf',
     'semantic-release',
-    'ts-node',
-    'ts-patch',
     'typescript',
-    'vite-tsconfig-paths',
     'vitest',
     'vitest-mock-extended',
+] as const
+
+const PackageDevDeps = [...CommonDevDeps, 'tsdown', 'vite-tsconfig-paths'] as const
+
+const ServiceDevDeps = [
+    ...CommonDevDeps,
+    '@bufbuild/buf',
+    '@diia-inhouse/genproto',
+    '@diia-inhouse/scaffold',
+    'ts-patch',
+    'tsc-alias',
+    'tsx',
 ] as const
 
 export const packageDependencies = { devDeps: PackageDevDeps }
@@ -37,12 +46,11 @@ export const PackageDeps = [
     '@diia-inhouse/utils',
     '@diia-inhouse/validators',
     'migrate-mongo',
-    'module-alias',
 ] as const
 
 export type PackageDep = (typeof PackageDeps)[number]
 
 export const serviceDependencies = {
-    devDeps: [...PackageDevDeps, '@diia-inhouse/scaffold', '@bufbuild/buf'],
+    devDeps: ServiceDevDeps,
     deps: PackageDeps,
 }

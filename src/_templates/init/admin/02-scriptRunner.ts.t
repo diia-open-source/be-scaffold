@@ -1,3 +1,3 @@
 ---
-sh: "npx prettier --write <%= actionPath %> <%= interfacePath %> && npm install @diia-inhouse/pkg-admin"
+sh: "npx oxfmt <%= actionPath %> <%= interfacePath %> && npm install @diia-inhouse/admin"
 ---

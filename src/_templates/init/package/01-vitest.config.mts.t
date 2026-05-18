@@ -3,14 +3,21 @@ to:  <%= packageName %>/vitest.config.mts
 ---
 
 import tsConfigPaths from 'vite-tsconfig-paths'
-import { defineProject } from 'vitest/config'
+import { defineConfig } from 'vitest/config'
 
 const timeout = 60 * 1000
 
-export default defineProject({
+export default defineConfig({
     plugins: [tsConfigPaths()],
     test: {
         name: 'unit',
+        env: {
+            NODE_ENV: 'test',
+        },
+        clearMocks: true,
+        restoreMocks: true,
+        mockReset: true,
+        globals: true,
         testTimeout: timeout,
         hookTimeout: timeout,
         exclude: ['node_modules', 'dist'],

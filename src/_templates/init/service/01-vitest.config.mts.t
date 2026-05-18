@@ -2,13 +2,14 @@
 to:  <%= serviceName %>/vitest.config.mts
 ---
 
-import tsConfigPaths from 'vite-tsconfig-paths'
 import { defineProject } from 'vitest/config'
 
 const timeout = 60 * 1000
 
 export default defineProject({
-    plugins: [tsConfigPaths()],
+    resolve: {
+        tsconfigPaths: true,
+    },
     test: {
         env: {
             NODE_ENV: 'test',
@@ -20,6 +21,7 @@ export default defineProject({
         testTimeout: timeout,
         hookTimeout: timeout,
         exclude: ['node_modules', 'dist'],
+        setupFiles: ['@diia-inhouse/test/vitest'],
         projects: [
             {
                 extends: true,
@@ -38,5 +40,3 @@ export default defineProject({
         ],
     },
 })
-
-

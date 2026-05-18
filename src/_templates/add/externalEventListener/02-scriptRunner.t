@@ -1,3 +1,3 @@
 ---
-sh: "npx prettier --write <%= eventPath %> <%= eventInterfacePath %>"
+sh: "npx oxfmt <%= eventPath %> <%= eventInterfacePath %>"
 ---

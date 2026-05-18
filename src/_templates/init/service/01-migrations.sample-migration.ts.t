@@ -1,18 +1,17 @@
 ---
 to:  <%= serviceName %>/migrations/sample-migration.ts
 ---
-import 'module-alias/register'
-import { config } from 'dotenv-flow'
+import dotenvFlow from 'dotenv-flow'
 import { Db } from 'mongodb'
 
-config({ silent: true })
+dotenvFlow.config({ silent: true })
 
-const collectionName = ''
-
-export async function up(db: Db): Promise<void> {
-    // await db.createCollection(collectionName)
+export async function up(_db: Db): Promise<void> {
+    // const collectionName = ''
+    // await _db.createCollection(collectionName)
 }
 
-export async function down(db: Db): Promise<void> {
-    // await db.dropCollection(collectionName)
+export async function down(_db: Db): Promise<void> {
+    // const collectionName = ''
+    // await _db.dropCollection(collectionName)
 }

@@ -3,7 +3,7 @@ to:  <%= adminServicePath %>/index.ts
 ---
 import { AdminExposer, ExtractEvents } from '@diia-inhouse/admin'
 
-import { AdminActions } from './actions'
+import { AdminActions } from './actions.js'
 
 export default class AdminService {
     constructor(

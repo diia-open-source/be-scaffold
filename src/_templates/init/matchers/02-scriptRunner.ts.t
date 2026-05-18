@@ -1,3 +1,3 @@
 ---
-sh: "npx prettier --write <%= tsConfigPath %> <%= matcherPath %> <%= vitestTypesDeclarationPath %>"
+sh: "npx oxfmt <%= tsConfigPath %> <%= matcherPath %> <%= vitestTypesDeclarationPath %>"
 ---

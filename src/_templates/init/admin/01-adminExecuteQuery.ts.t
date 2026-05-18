@@ -4,10 +4,10 @@ to:  <%= actionPath %>/adminExecuteQuery.ts
 
 import { GrpcAppAction } from '@diia-inhouse/diia-app'
 
-import { ModelExposer } from '@diia-inhouse/pkg-admin'
+import { ModelExposer } from '@diia-inhouse/admin'
 import { SessionType } from '@diia-inhouse/types'
 
-import { ActionResult, Context } from '@interfaces/actions/v1/admin/adminExecuteQuery'
+import { ActionResult, Context } from '@interfaces/actions/v1/admin/adminExecuteQuery.js'
 
 export default class AdminExecuteQueryAction implements GrpcAppAction<Context> {
     readonly name = 'adminExecuteQuery'

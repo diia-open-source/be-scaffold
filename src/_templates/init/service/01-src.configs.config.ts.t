@@ -11,10 +11,10 @@ import { RedisOptions } from '@diia-inhouse/redis'
 <%if (h.isOptionSelected(selectedDependencies, ['internal', 'external'])) {%>
 import { QueueConnectionType, QueueTypes } from '@diia-inhouse/diia-queue'
 
-import serviceRulesConfig from '@src/configs/queue'
+import serviceRulesConfig from '@src/configs/queue.js'
 <%}%>
 
-// eslint-disable-next-line @typescript-eslint/explicit-function-return-type
+// oxlint-disable-next-line typescript/explicit-function-return-type
 export default async (<%= h.isOptionSelected(selectedDependencies, ['database', 'internal', 'external']) ? "envService: EnvService, " : '' %> <%= h.isOptionSelected(selectedDependencies, ['internal', 'external']) ? "serviceName: string" : '' %>) => ({
     healthCheck: {
         isEnabled: EnvService.getVar('HEALTH_CHECK_IS_ENABLED', 'boolean'),

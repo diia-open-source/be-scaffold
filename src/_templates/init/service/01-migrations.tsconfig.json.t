@@ -3,19 +3,14 @@ to:  <%= serviceName %>/migrations/tsconfig.json
 ---
 {
     "extends": "../tsconfig.json",
-    "ts-node": {
-        "files": true
-    },
     "compilerOptions": {
         "sourceMap": true,
-        "baseUrl": "../",
         "paths": {
-            "@services/*": ["dist/types/services/*"],
-            "@interfaces/*": ["dist/types/interfaces/*"],
-            "@src/*": ["dist/types/"],
-        }
+            "@services/*": ["../src/services/*"],
+            "@interfaces/*": ["../src/interfaces/*"],
+            "@src/*": ["../src/*"]
+        },
+        "rootDir": "../"
     },
-    "include": [
-        "./**/*"
-    ]
+    "include": ["./**/*"]
 }

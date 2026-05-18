@@ -1,3 +1,3 @@
 ---
-sh: "npx prettier --write <%= testPath %>"
+sh: "npx oxfmt <%= testPath %>"
 ---

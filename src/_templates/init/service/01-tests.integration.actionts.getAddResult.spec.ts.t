@@ -2,13 +2,13 @@
 to:  <%= serviceName %>/tests/integration/actions/v1/getAddResult.spec.ts
 ---
 
-import { <%= h.changeCase.pascal(serviceName) %>Client } from '@src/generated'
+import { <%= h.changeCase.pascal(serviceName) %>Client } from '@src/generated/index.js'
 
-import { ActionResult } from '@interfaces/actions/v1/getAddResult'
+import GetAddResultAction from '@src/actions/v1/getAddResult.js'
 
-import GetAddResultAction from '@src/actions/v1/getAddResult'
+import { getApp } from '@tests/utils/getApp.js'
 
-import { getApp } from '@tests/utils/getApp'
+import { ActionResult } from '@interfaces/actions/v1/getAddResult.js'
 
 describe(`Action ${GetAddResultAction.name}`, () => {
     let app: Awaited<ReturnType<typeof getApp>>
@@ -21,9 +21,9 @@ describe(`Action ${GetAddResultAction.name}`, () => {
 
     it('should return correct result', async () => {
         // Arrange
-        const a = 2;
-        const b = 3;
-        
+        const a = 2
+        const b = 3
+
         // Act
         const result = await <%= h.changeCase.camel(serviceName) %>Client.getAddResult({ a, b })
 

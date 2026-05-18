@@ -8,8 +8,8 @@ export default {
     prompt: async ({ prompter }: Prompt): Promise<Answers> => {
         console.log(
             chalk.red.bold('README!\n'),
-            chalk.blue('After a files generation scaffold tries to run "npm install" and "prettier", please wait. \n'),
-            chalk.blue('If you have some troubles with a new project, try to reinstall dependencies and run the prettier manually \n\n'),
+            chalk.blue('After a files generation scaffold tries to run "npm install" and "oxfmt", please wait. \n'),
+            chalk.blue('If you have some troubles with a new project, try to reinstall dependencies and run oxfmt manually \n\n'),
         )
 
         const { packageName } = await prompter.prompt({

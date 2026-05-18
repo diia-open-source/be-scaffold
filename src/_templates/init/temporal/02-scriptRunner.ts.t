@@ -1,3 +1,3 @@
 ---
-sh: "npx prettier --write <%= workerRoot %>"
+sh: "npx oxfmt <%= workerRoot %>"
 ---

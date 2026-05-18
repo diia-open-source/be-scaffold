@@ -1,3 +1,3 @@
 ---
-sh: "npx prettier --write <%= scheduledTaskPath %>"
+sh: "npx oxfmt <%= scheduledTaskPath %>"
 ---

@@ -20,7 +20,7 @@ const serviceDepsToPackageDeps: Record<ServiceDep, PackageDep[]> = {
 
 export default {
     prompt: async ({ prompter }: Prompt): Promise<Answers> => {
-        console.log(chalk.bold('After a files generation scaffold tries to run "npm install" and "prettier", please wait. \n'))
+        console.log(chalk.bold('After a files generation scaffold tries to run "npm install" and "oxfmt", please wait. \n'))
 
         const { serviceName } = await prompter.prompt({
             type: 'input',

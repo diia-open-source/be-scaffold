@@ -4,7 +4,7 @@ to:  <%= workerRoot %>/workflows/workflowExample.ts
 
 import { buildActivitiesProxy, log } from '@diia-inhouse/workflow/operations'
 
-import type { workerActivities } from '../../activities'
+import type { workerActivities } from '../activities/index.js'
 
 const { exampleActivities } = buildActivitiesProxy<typeof workerActivities>()
 

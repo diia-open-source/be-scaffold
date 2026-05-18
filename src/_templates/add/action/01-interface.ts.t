@@ -4,8 +4,7 @@ to:  <%= interfacePath %>
 
 import { ActionContext } from '@diia-inhouse/types'
 
-import { <%= h.changeCase.pascal(name) %>Req, <%= h.changeCase.pascal(name) %>Res } from '@src/generated'
-
+import { <%= h.changeCase.pascal(name) %>Req, <%= h.changeCase.pascal(name) %>Res } from '@src/generated/index.js'
 
 export type Context = ActionContext<<%= h.changeCase.pascal(name) %>Req>
 

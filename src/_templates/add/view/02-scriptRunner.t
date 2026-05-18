@@ -1,3 +1,3 @@
 ---
-sh: "npx prettier --write <%= viewPath %> <%= interfacePath %> <%= indexPath %>"
+sh: "npx oxfmt <%= viewPath %> <%= interfacePath %> <%= indexPath %>"
 ---

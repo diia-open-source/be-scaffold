@@ -3,7 +3,7 @@ to:  <%= interfacePath %>/adminExecuteCommand.ts
 ---
 import { ActionContext } from '@diia-inhouse/types'
 
-import { AdminExecuteCustomReq, AdminExecuteCustomRes } from '@src/generated'
+import { AdminExecuteCustomReq, AdminExecuteCustomRes } from '@src/generated/index.js'
 
 export type Context = ActionContext<AdminExecuteCustomReq>
 

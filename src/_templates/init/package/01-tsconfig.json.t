@@ -8,13 +8,9 @@ to:  <%= packageName %>/tsconfig.json
         "outDir": "dist",
         "declaration": true,
         "declarationDir": "dist/types",
-        "baseUrl": ".",
-        "paths": {
-            "@services/*": ["src/services/*"],
-            "@interfaces/*": ["src/interfaces/*"],
-            "@src/*": ["src/*"],
-            "@tests/*": ["tests/*"]
-        }
+        "isolatedDeclarations": true,
+        "strict": true,
+        "rootDir": "./src"
     },
     "include": ["src/**/*"],
     "exclude": ["node_modules", "tests"]

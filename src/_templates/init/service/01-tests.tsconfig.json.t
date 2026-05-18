@@ -5,23 +5,24 @@ to:  <%= serviceName %>/tests/tsconfig.json
 {
     "extends": "@diia-inhouse/configs/tsconfig",
     "compilerOptions": {
-        "baseUrl": "../",
         "types": ["vite/client", "vitest/globals", "./vitest.d.ts"],
         "module": "ESNext",
         "moduleResolution": "Bundler",
         "isolatedModules": true,
         "paths": {
-            "@services/*": ["src/services/*"],
-            "@interfaces/*": ["src/interfaces/*"],
+            "@services/*": ["../src/services/*"],
+            "@interfaces/*": ["../src/interfaces/*"],
             <%if (h.isOptionSelected(selectedDependencies, 'database')) {%>
-            "@models/*": ["src/models/*"],
+            "@models/*": ["../src/models/*"],
             <%}%>
-            "@dataMappers/*": ["src/dataMappers/*"],
-            "@actions/*": ["src/actions/*"],
-            "@src/*": ["src/*"],
-            "@tests/*": ["tests/*"]
+            "@dataMappers/*": ["../src/dataMappers/*"],
+            "@actions/*": ["../src/actions/*"],
+            "@src/*": ["../src/*"],
+            "@tests/*": ["./*"]
         },
-        "noEmit": true
+        "noEmit": true,
+        "strict": true,
+        "rootDir": "../"
     },
     "include": ["./**/*", "../vitest.config.mts"]
 }

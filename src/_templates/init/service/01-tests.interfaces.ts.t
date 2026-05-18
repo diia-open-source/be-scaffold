@@ -4,7 +4,7 @@ to:  <%= serviceName %>/tests/interfaces.ts
 
 import TestKit from '@diia-inhouse/test'
 
-import { <%= h.changeCase.pascal(serviceName) %>Client } from '@src/generated'
+import { <%= h.changeCase.pascal(serviceName) %>Client } from '@src/generated/index.js'
 
 export interface TestDeps {
     testKit: TestKit
