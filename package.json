@@ -1,6 +1,6 @@
 {
     "name": "@diia-inhouse/scaffold",
-    "version": "2.54.1",
+    "version": "2.55.0",
     "main": "dist/index.js",
     "engines": {
         "node": ">=22"
