@@ -2,13 +2,9 @@
 to:  <%= serviceName %>/src/index.ts
 ---
 
-import { initTracing } from '@diia-inhouse/diia-app'
-
+import { nodeTracerProvider } from '@diia-inhouse/diia-app/tracing/register'
 import { utils } from '@diia-inhouse/utils'
-
-const serviceName = utils.getServiceName()
-const nodeTracerProvider = initTracing()
 
 import { bootstrap } from './bootstrap.js'
 
-void bootstrap(serviceName, nodeTracerProvider)
+void bootstrap(utils.getServiceName(), nodeTracerProvider)
