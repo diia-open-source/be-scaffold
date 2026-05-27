@@ -6,8 +6,8 @@ import { Application, NodeTracerProvider, ServiceContext } from '@diia-inhouse/d
 
 import { initWorker, instantiateActivities } from '@diia-inhouse/workflow/worker'
 
-import { AppConfig } from '@interfaces/config.js'
-import { AppDeps } from '@interfaces/deps.js'
+import { AppConfig } from '#configs/config.types.js'
+import { AppDeps } from '#deps/types.js'
 
 import { workerActivities } from './activities/index.js'
 

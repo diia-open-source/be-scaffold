@@ -1,9 +1,9 @@
 ---
-to:  <%= interfacePath %>/adminExecuteQuery.ts
+to:  <%= interfacePath %>/adminExecuteQuery.types.ts
 ---
 import { ActionContext } from '@diia-inhouse/types'
 
-import { AdminExecuteQueryReq, AdminExecuteQueryRes } from '@src/generated/index.js'
+import { AdminExecuteQueryReq, AdminExecuteQueryRes } from '#generated/index.js'
 
 export type Context = ActionContext<AdminExecuteQueryReq>
 

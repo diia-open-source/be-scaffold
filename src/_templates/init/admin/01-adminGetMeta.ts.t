@@ -7,7 +7,7 @@ import { GrpcAppAction } from '@diia-inhouse/diia-app'
 import { AdminExposer } from '@diia-inhouse/admin'
 import { SessionType } from '@diia-inhouse/types'
 
-import { ActionResult } from '@interfaces/actions/v1/admin/adminGetMeta'
+import { ActionResult } from '#actions/v1/admin/adminGetMeta.types.js'
 
 export default class AdminGetMetaAction implements GrpcAppAction {
     readonly name = 'adminGetMeta'

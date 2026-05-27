@@ -2,13 +2,12 @@
 to:  <%= serviceName %>/tests/integration/actions/v1/getAddResult.spec.ts
 ---
 
-import { <%= h.changeCase.pascal(serviceName) %>Client } from '@src/generated/index.js'
+import { <%= h.changeCase.pascal(serviceName) %>Client } from '#generated/index.js'
 
-import GetAddResultAction from '@src/actions/v1/getAddResult.js'
+import GetAddResultAction from '#actions/v1/getAddResult.js'
+import { ActionResult } from '#actions/v1/getAddResult.types.js'
 
-import { getApp } from '@tests/utils/getApp.js'
-
-import { ActionResult } from '@interfaces/actions/v1/getAddResult.js'
+import { getApp } from '#tests/utils/getApp.js'
 
 describe(`Action ${GetAddResultAction.name}`, () => {
     let app: Awaited<ReturnType<typeof getApp>>

@@ -16,17 +16,9 @@ const CommonDevDeps = [
     'vitest-mock-extended',
 ] as const
 
-const PackageDevDeps = [...CommonDevDeps, 'tsdown', 'vite-tsconfig-paths'] as const
+const PackageDevDeps = [...CommonDevDeps, 'tsdown'] as const
 
-const ServiceDevDeps = [
-    ...CommonDevDeps,
-    '@bufbuild/buf',
-    '@diia-inhouse/genproto',
-    '@diia-inhouse/scaffold',
-    'ts-patch',
-    'tsc-alias',
-    'tsx',
-] as const
+const ServiceDevDeps = [...CommonDevDeps, '@bufbuild/buf', '@diia-inhouse/genproto', '@diia-inhouse/scaffold', 'tsx'] as const
 
 export const packageDependencies = { devDeps: PackageDevDeps }
 

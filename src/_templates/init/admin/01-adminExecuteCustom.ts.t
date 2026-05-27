@@ -7,10 +7,9 @@ import { GrpcAppAction } from '@diia-inhouse/diia-app'
 import { SessionType } from '@diia-inhouse/types'
 import { ValidationSchema } from '@diia-inhouse/validators'
 
-import { AdminActions } from '@services/admin/actions.js'
-import AdminService from '@services/admin/index.js'
-
-import { ActionResult, Context } from '@interfaces/actions/v1/admin/adminExecuteCustom.js'
+import { ActionResult, Context } from '#actions/v1/admin/adminExecuteCustom.types.js'
+import { AdminActions } from '#services/admin/actions.js'
+import AdminService from '#services/admin/index.js'
 
 export default class AdminExecuteCustomAction implements GrpcAppAction<Context> {
     readonly name = 'adminExecuteCustom'

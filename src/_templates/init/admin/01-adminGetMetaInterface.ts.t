@@ -1,8 +1,8 @@
 ---
-to:  <%= interfacePath %>/adminGetMeta.ts
+to:  <%= interfacePath %>/adminGetMeta.types.ts
 ---
 import { ActionContext } from '@diia-inhouse/types'
 
-import { AdminGetMetaRes } from '@src/generated/index.js'
+import { AdminGetMetaRes } from '#generated/index.js'
 
 export type ActionResult = AdminGetMetaRes

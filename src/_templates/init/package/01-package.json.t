@@ -34,6 +34,9 @@ to:  <%= packageName %>/package.json
         "lint:lockfile": "lockfile-lint --path package-lock.json --allowed-hosts registry.npmjs.org gitlab.diia.org.ua --validate-https"
     },
     "files": ["dist"],
+    "imports": {
+        "#*": "./dist/*"
+    },
     "keywords": [],
     "devDependencies": {},
     "commitlint": {

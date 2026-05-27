@@ -10,8 +10,7 @@ to:  <%= serviceName %>/package.json
     "author": "diia-team",
     "main": "dist/index.js",
     "scripts": {
-        "prepare": "ts-patch install -s",
-        "build": "rimraf dist && npm run genproto && tsc && tsc-alias",
+        "build": "rimraf dist && npm run genproto && tsc",
         "start": "node dist/index.js",
         "semantic-release": "semantic-release -e @diia-inhouse/configs/dist/semantic-release/service-stage --debug --ci",
         "semantic-release-prod": "semantic-release -e @diia-inhouse/configs/dist/semantic-release/service-prod --debug --ci",
@@ -37,6 +36,9 @@ to:  <%= serviceName %>/package.json
     "files": [
         "dist"
     ],
+    "imports": {
+        "#*": "./dist/*"
+    },
     "commitlint": {
         "extends": "@diia-inhouse/configs/dist/commitlint"
     },

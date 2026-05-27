@@ -13,9 +13,9 @@ export default {
             message: "What's your ExternalEvent enum key?",
             required: true,
         })
-        const fileName = `${camelCase(eventEnumKey)}.ts`
-        const eventPath = path.resolve(process.cwd(), 'src/externalEventListeners', fileName)
-        const eventInterfacePath = path.resolve(process.cwd(), 'src/interfaces/externalEventListeners', fileName)
+        const fileBaseName = camelCase(eventEnumKey)
+        const eventPath = path.resolve(process.cwd(), 'src/externalEventListeners', `${fileBaseName}.ts`)
+        const eventInterfacePath = path.resolve(process.cwd(), 'src/externalEventListeners', `${fileBaseName}.types.ts`)
 
         return { eventEnumKey, eventPath, eventInterfacePath }
     },

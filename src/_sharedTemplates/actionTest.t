@@ -2,13 +2,13 @@ import { clientCallOptions } from '@diia-inhouse/diia-app'
 
 import TestKit from '@diia-inhouse/test'
 
-import { GrpcClient } from '@src/generated/index.js'
+import { GrpcClient } from '#generated/index.js'
 
 import <%= h.changeCase.pascal(name) %>Action from '<%= relateActionPathFromTest %>.js'
 
 import { ActionResult } from '<%= relativeInterfacePath %>.js'
 
-import { getApp } from '@tests/utils/getApp.js'
+import { getApp } from '#tests/utils/getApp.js'
 
 describe(`Action ${<%= h.changeCase.pascal(name) %>Action.name}`, () => {
     let app: Awaited<ReturnType<typeof getApp>>

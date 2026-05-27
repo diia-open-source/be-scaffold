@@ -11,7 +11,7 @@ import { RedisOptions } from '@diia-inhouse/redis'
 <%if (h.isOptionSelected(selectedDependencies, ['internal', 'external'])) {%>
 import { QueueConnectionType, QueueTypes } from '@diia-inhouse/diia-queue'
 
-import serviceRulesConfig from '@src/configs/queue.js'
+import serviceRulesConfig from '#configs/queue.js'
 <%}%>
 
 // oxlint-disable-next-line typescript/explicit-function-return-type

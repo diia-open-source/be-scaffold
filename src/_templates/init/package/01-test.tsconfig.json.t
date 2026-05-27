@@ -10,8 +10,7 @@ to:  <%= packageName %>/tests/tsconfig.json
         "moduleResolution": "Bundler",
         "isolatedModules": true,
         "paths": {
-            "@src/*": ["../src/*"],
-            "@tests/*": ["./*"]
+            "#*": ["../src/*"]
         },
         "noEmit": true,
         "strict": true,

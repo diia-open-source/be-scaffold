@@ -6,9 +6,7 @@ to:  <%= serviceName %>/migrations/tsconfig.json
     "compilerOptions": {
         "sourceMap": true,
         "paths": {
-            "@services/*": ["../src/services/*"],
-            "@interfaces/*": ["../src/interfaces/*"],
-            "@src/*": ["../src/*"]
+            "#*": ["../src/*"]
         },
         "rootDir": "../"
     },

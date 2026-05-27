@@ -1,5 +1,5 @@
 ---
-to: "<%= h.isOptionSelected(selectedDependencies, ['internal', 'external']) ? `${serviceName}/src/interfaces/queue.ts` : null %>"
+to: "<%= h.isOptionSelected(selectedDependencies, ['internal', 'external']) ? `${serviceName}/src/configs/queue.types.ts` : null %>"
 ---
 
 export const InternalQueueNames = {

@@ -79,12 +79,12 @@ export default {
         }
 
         const finalActionPath = path.resolve(process.cwd(), 'src/actions', `${newActionPath}.ts`)
-        const finalInterfacePath = path.resolve(process.cwd(), 'src/interfaces/actions', `${newActionPath}.ts`)
+        const finalInterfacePath = path.resolve(process.cwd(), 'src/actions', `${newActionPath}.types.ts`)
 
-        const relativeInterfacePath = path.join('@interfaces/actions', newActionPath)
+        const relativeInterfacePath = path.join('#actions', `${newActionPath}.types`)
 
         const testPath = path.resolve(process.cwd(), 'tests/integration/actions/', `${newActionPath}.spec.ts`)
-        const relateActionPathFromTest = path.join('@src/actions', newActionPath)
+        const relateActionPathFromTest = path.join('#actions', newActionPath)
 
         const isActionWithValidation = await promptYesNoSelect({
             message: 'Do you need validation?',

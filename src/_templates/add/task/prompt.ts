@@ -26,9 +26,9 @@ export default {
             initial: YesNoAnswer.Yes,
         })
 
-        const fileName = `${camelCase(taskEnumKey)}.ts`
-        const taskPath = path.resolve(process.cwd(), 'src/tasks', fileName)
-        const taskInterfacePath = isTaskWithValidation ? path.resolve(process.cwd(), 'src/interfaces/tasks', fileName) : ''
+        const fileBaseName = camelCase(taskEnumKey)
+        const taskPath = path.resolve(process.cwd(), 'src/tasks', `${fileBaseName}.ts`)
+        const taskInterfacePath = isTaskWithValidation ? path.resolve(process.cwd(), 'src/tasks', `${fileBaseName}.types.ts`) : ''
 
         return { taskEnumKey, taskPath, isTaskWithValidation, taskInterfacePath, isDelayedTask }
     },

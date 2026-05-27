@@ -13,7 +13,7 @@ export default {
         })
 
         const modelPath = path.resolve(process.cwd(), 'src/models', `${name}.ts`)
-        const interfacePath = path.resolve(process.cwd(), 'src/interfaces/models', `${name}.ts`)
+        const interfacePath = path.resolve(process.cwd(), 'src/models', `${name}.types.ts`)
 
         return { name, modelPath, interfacePath }
     },

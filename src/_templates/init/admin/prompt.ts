@@ -8,7 +8,7 @@ import { Answers } from '../../../interfaces/_templates/init/admin'
 export default {
     prompt: async ({ prompter }: Prompt): Promise<Answers> => {
         const finalActionPath = path.resolve(process.cwd(), 'src/actions/v1/admin')
-        const finalInterfacePath = path.resolve(process.cwd(), 'src/interfaces/actions/v1/admin')
+        const finalInterfacePath = path.resolve(process.cwd(), 'src/actions/v1/admin')
         const adminServicePath = path.resolve(process.cwd(), 'src/services/admin')
 
         console.log(chalk.red.bold('README!\n'))

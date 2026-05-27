@@ -7,7 +7,7 @@ import { GrpcAppAction } from '@diia-inhouse/diia-app'
 import { ModelExposer } from '@diia-inhouse/admin'
 import { SessionType } from '@diia-inhouse/types'
 
-import { ActionResult, Context } from '@interfaces/actions/v1/admin/adminExecuteQuery.js'
+import { ActionResult, Context } from '#actions/v1/admin/adminExecuteQuery.types.js'
 
 export default class AdminExecuteQueryAction implements GrpcAppAction<Context> {
     readonly name = 'adminExecuteQuery'

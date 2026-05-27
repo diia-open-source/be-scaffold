@@ -1,10 +1,10 @@
 ---
-to:  <%= serviceName %>/src/interfaces/actions/v1/getAddResult.ts
+to:  <%= serviceName %>/src/actions/v1/getAddResult.types.ts
 ---
 
 import { ActionContext } from '@diia-inhouse/types'
 
-import { GetAddResultReq, GetAddResultRes } from '@src/generated/index.js'
+import { GetAddResultReq, GetAddResultRes } from '#generated/index.js'
 
 export type Context = ActionContext<GetAddResultReq>
 

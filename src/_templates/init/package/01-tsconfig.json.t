@@ -10,6 +10,9 @@ to:  <%= packageName %>/tsconfig.json
         "declarationDir": "dist/types",
         "isolatedDeclarations": true,
         "strict": true,
+        "paths": {
+            "#*": ["./src/*"]
+        },
         "rootDir": "./src"
     },
     "include": ["src/**/*"],

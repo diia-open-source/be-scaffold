@@ -6,12 +6,11 @@ import { DepsFactoryFn, asClass } from '@diia-inhouse/diia-app'
 
 import TestKit from '@diia-inhouse/test'
 
-import deps from '@src/deps.js'
+import { AppConfig } from '#configs/config.types.js'
+import deps from '#deps/index.js'
+import { AppDeps } from '#deps/types.js'
 
-import { TestDeps } from '@tests/interfaces.js'
-
-import { AppConfig } from '@interfaces/config.js'
-import { AppDeps } from '@interfaces/deps.js'
+import { TestDeps } from '#tests/interfaces.js'
 
 export default async (config: AppConfig): ReturnType<DepsFactoryFn<AppConfig, AppDeps & TestDeps>> => {
     return {

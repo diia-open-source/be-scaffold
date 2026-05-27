@@ -8,7 +8,7 @@ import {
     InternalTopics,
     ScheduledTaskEvents,
     ScheduledTaskQueueNames,
-} from '@interfaces/queue.js'
+} from '#configs/queue.types.js'
 
 export default {
     portalEvents: [],

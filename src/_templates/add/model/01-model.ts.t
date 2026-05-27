@@ -4,9 +4,7 @@ to:  <%= modelPath %>
 
 import { Model, Schema, model, models } from '@diia-inhouse/db'
 
-import {
-    <%= h.changeCase.pascal(name) %>
-} from '@interfaces/models/<%= name %>.js'
+import { <%= h.changeCase.pascal(name) %> } from '#models/<%= name %>.types.js'
 
 export const <%= name %>Schema = new Schema<<%= h.changeCase.pascal(name) %>>(
     {},

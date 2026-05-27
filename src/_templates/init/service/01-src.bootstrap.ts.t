@@ -4,12 +4,11 @@ to:  <%= serviceName %>/src/bootstrap.ts
 
 import { Application, NodeTracerProvider, ServiceContext } from '@diia-inhouse/diia-app'
 
-import configFactory from '@src/configs/config.js'
-import { loggerConfig } from '@src/configs/logger.js'
-import deps from '@src/deps.js'
-
-import { AppConfig } from '@interfaces/config.js'
-import { AppDeps } from '@interfaces/deps.js'
+import configFactory from '#configs/config.js'
+import { AppConfig } from '#configs/config.types.js'
+import { loggerConfig } from '#configs/logger.js'
+import deps from '#deps/index.js'
+import { AppDeps } from '#deps/types.js'
 
 export async function bootstrap(serviceName: string, nodeTracerProvider: NodeTracerProvider): Promise<void> {
     const app = new Application<ServiceContext<AppConfig, AppDeps>>(serviceName, nodeTracerProvider, loggerConfig)

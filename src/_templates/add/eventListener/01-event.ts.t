@@ -5,7 +5,7 @@ to: <%= eventPath %>
 import { EventBusListener, InternalEvent } from '@diia-inhouse/diia-queue'
 import { ValidationSchema } from '@diia-inhouse/validators'
 
-import { EventPayload } from '@interfaces/eventListeners/<%= h.changeCase.camel(eventEnumKey) %>.js'
+import { EventPayload } from '#eventListeners/<%= h.changeCase.camel(eventEnumKey) %>.types.js'
 
 export default class <%= eventEnumKey %>EventListener implements EventBusListener {
     readonly event: InternalEvent = InternalEvent.<%= eventEnumKey %>

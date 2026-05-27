@@ -1,5 +1,5 @@
 ---
-to:  <%= serviceName %>/src/views/exampleViews/interface.ts
+to:  <%= serviceName %>/src/views/types.ts
 ---
 
 import { DesignSystemResponse } from '@diia-inhouse/design-system'

@@ -4,15 +4,14 @@ to:  <%= serviceName %>/tests/utils/getApp.ts
 
 import { Application, GrpcClientFactory, ServiceContext, ServiceOperator, NodeTracerProvider, asFunction } from '@diia-inhouse/diia-app'
 
-import config from '@src/configs/config.js'
-import { loggerConfig } from '@src/configs/logger.js'
-import { <%= h.changeCase.pascal(serviceName) %>Definition } from '@src/generated/index.js'
+import config from '#configs/config.js'
+import { AppConfig } from '#configs/config.types.js'
+import { loggerConfig } from '#configs/logger.js'
+import { AppDeps } from '#deps/types.js'
+import { <%= h.changeCase.pascal(serviceName) %>Definition } from '#generated/index.js'
 
-import { TestDeps } from '@tests/interfaces.js'
-import deps from '@tests/utils/getDeps.js'
-
-import { AppConfig } from '@interfaces/config.js'
-import { AppDeps } from '@interfaces/deps.js'
+import { TestDeps } from '#tests/interfaces.js'
+import deps from '#tests/utils/getDeps.js'
 
 const modules = {
     actions: import.meta.glob('/src/actions/**/*.ts'),

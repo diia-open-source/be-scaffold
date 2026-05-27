@@ -6,12 +6,11 @@ import { TaskListener } from '@diia-inhouse/diia-queue'
 
 <% if (isTaskWithValidation) { %>
 import { ValidationSchema } from '@diia-inhouse/validators'
-import { ExternalEventPayload } from '@interfaces/externalEventListeners/<%= h.changeCase.camel(taskEnumKey) %>.js'
-import { TaskPayload } from '@interfaces/tasks/<%= h.changeCase.camel(taskEnumKey) %>.js'
+
+import { TaskPayload } from '#tasks/<%= h.changeCase.camel(taskEnumKey) %>.types.js'
 <% } %>
 
-
-import { ServiceTask } from '@interfaces/tasks.js'
+import { ServiceTask } from '#tasks/types.js'
 
 export default class <%= taskEnumKey %>Task implements TaskListener {
     readonly name: string = ServiceTask.<%= taskEnumKey %>

@@ -2,7 +2,7 @@
 to:  <%= packageName %>/tests/unit/index.spec.ts
 ---
 
-import { add } from '@src/index.js'
+import { add } from '#index.js'
 
 describe('Add', () => {
     it('should be return 3', () => {
