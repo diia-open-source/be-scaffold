@@ -3,7 +3,7 @@ to:  <%= serviceName %>/package.json
 ---
 
 {
-    "name": "<%= serviceName %>",
+    "name": "<%= serviceName.replace(/-service$/, '') %>",
     "version": "1.0.0",
     "type": "module",
     "description": "<%= description %>",

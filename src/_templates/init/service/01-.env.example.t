@@ -22,7 +22,7 @@ STORE_READ_ONLY_OPTIONS={"port":6379}
 MONGO_HOST=mongo1
 MONGO_HOSTS=mongo1,mongo2,mongo3
 MONGO_PORT=27017
-MONGO_DATABASE=diia-<%= serviceName %>-service
+MONGO_DATABASE=diia-<%= serviceName.replace(/-service$/, '') %>-service
 MONGO_USER=
 MONGO_PASSWORD=
 MONGO_REPLICA_SET=diia
