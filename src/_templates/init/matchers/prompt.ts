@@ -58,7 +58,6 @@ export default {
         const matcherPath = path.resolve(matcherFolderPath, `${name}.ts`)
 
         const vitestTypesDeclarationPath = path.resolve(testsPath, 'vitest.d.ts')
-        // eslint-disable-next-line security/detect-non-literal-fs-filename
         const isVitestTypesDeclarationExists = fs.existsSync(vitestTypesDeclarationPath) // nosemgrep: eslint.detect-non-literal-fs-filename
 
         let rootTsConfigPath = path.resolve(process.cwd(), 'tsconfig.json')
@@ -77,7 +76,6 @@ export default {
                 throw new Error('You can use this scaffold only inside ts-project')
             }
 
-            // eslint-disable-next-line security/detect-non-literal-require
             const tsConfig = require(rootTsConfigPath) // nosemgrep: eslint.detect-non-literal-require
 
             extendedTsConfig = { ...tsConfig, include: [...tsConfig.include, 'tests/vitest.d.ts'] }

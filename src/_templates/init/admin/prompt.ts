@@ -1,8 +1,8 @@
 import path from 'node:path'
 
 import chalk from 'chalk'
-import { Prompt } from 'src/interfaces'
 
+import { Prompt } from '../../../interfaces'
 import { Answers } from '../../../interfaces/_templates/init/admin'
 
 export default {

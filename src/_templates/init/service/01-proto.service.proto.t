@@ -6,6 +6,7 @@ syntax = "proto3";
 
 package ua.gov.diia.<%= h.changeCase.pascalCase(serviceName).toLowerCase() %>;
 
+import "actions/v1/getAddResult.proto";
 import "google/api/annotations.proto";
 import "google/protobuf/empty.proto";
 
@@ -20,15 +21,6 @@ service <%= h.changeCase.pascalCase(serviceName) %>Public {
   rpc GetPublicResult(google.protobuf.Empty) returns (GetAddResultRes) {
     option (google.api.http) = {get: "/api/v1/public-service/<%= h.changeCase.snakeCase(serviceName) %>/{param}/data"};
   }
-}
-
-message GetAddResultReq {
-    int32 a = 1;
-    int32 b = 2;
-}
-
-message GetAddResultRes {
-    int32 result = 1;
 }
 
 message DesignSystemResponse {

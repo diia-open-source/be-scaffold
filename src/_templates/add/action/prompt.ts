@@ -54,10 +54,9 @@ export default {
 
         const actionFolder = await promptAutoComplete({
             name: 'actionFolder',
-            message:
-                'Pick folder where do you want create new action \n' +
-                chalk.green(`${ROOT_ACTION}          -> create new action in src/actions \n`) +
-                chalk.blue(`${NEW_FOLDER} -> create new folder with your action in src/actions \n`),
+            message: `Pick folder where do you want create new action \n${chalk.green(
+                `${ROOT_ACTION}          -> create new action in src/actions \n`,
+            )}${chalk.blue(`${NEW_FOLDER} -> create new folder with your action in src/actions \n`)}`,
             choices: getActionsFolder(normalizedVersion),
         })
 

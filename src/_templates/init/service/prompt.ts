@@ -55,7 +55,7 @@ export default {
 
         const selectedReadmePointValues: Map<ReadmePoint, string> = new Map()
 
-        for await (const point of selectedReadmePoints) {
+        for (const point of selectedReadmePoints) {
             const { value } = await prompter.prompt({
                 type: 'input',
                 name: 'value',
