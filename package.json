@@ -1,6 +1,6 @@
 {
     "name": "@diia-inhouse/scaffold",
-    "version": "2.58.2",
+    "version": "2.58.3",
     "main": "dist/index.js",
     "engines": {
         "node": ">=22"
@@ -24,7 +24,7 @@
     ],
     "author": "Diia",
     "dependencies": {
-        "@diia-inhouse/types": "14.2.6",
+        "@diia-inhouse/types": "14.2.7",
         "chalk": "4.1.2",
         "enquirer": "2.4.1",
         "execa": "5.1.1",
