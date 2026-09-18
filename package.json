@@ -1,6 +1,6 @@
 {
     "name": "@diia-inhouse/scaffold",
-    "version": "2.58.11",
+    "version": "2.58.12",
     "main": "dist/index.js",
     "engines": {
         "node": ">=22"
@@ -24,7 +24,7 @@
     ],
     "author": "Diia",
     "dependencies": {
-        "@diia-inhouse/types": "14.2.11",
+        "@diia-inhouse/types": "14.2.12",
         "chalk": "4.1.2",
         "enquirer": "2.4.1",
         "execa": "5.1.1",
@@ -33,7 +33,7 @@
     },
     "devDependencies": {
         "@diia-inhouse/configs": "7.2.1",
-        "@diia-inhouse/oxc-config": "3.0.0",
+        "@diia-inhouse/oxc-config": "3.0.1",
         "@types/lodash": "4.17.24",
         "@types/node": "25.3.3",
         "copyfiles": "2.4.1",
