@@ -5,20 +5,23 @@ to:  <%= packageName %>/package.json
 {
     "name": "@diia-inhouse/<%= packageName %>",
     "version": "1.0.0",
-    "type": "module",
     "description": "<%= description %>",
     "author": "diia-team",
+    "files": [
+        "dist"
+    ],
+    "type": "module",
     "main": "dist/index.js",
     "types": "dist/index.d.ts",
+    "imports": {
+        "#*": "./dist/*"
+    },
     "exports": {
         ".": {
             "types": "./dist/index.d.ts",
             "default": "./dist/index.js"
         },
         "./package.json": "./package.json"
-    },
-    "engines": {
-        "node": ">=24"
     },
     "scripts": {
         "prebuild": "rimraf dist",
@@ -33,17 +36,14 @@ to:  <%= packageName %>/package.json
         "find-circulars": "madge --circular --extensions ts ./",
         "lint:lockfile": "lockfile-lint --path package-lock.json --allowed-hosts registry.npmjs.org gitlab.diia.org.ua --validate-https"
     },
-    "files": ["dist"],
-    "imports": {
-        "#*": "./dist/*"
-    },
-    "keywords": [],
-    "devDependencies": {},
     "commitlint": {
         "extends": "@diia-inhouse/configs/dist/commitlint"
     },
     "release": {
         "extends": "@diia-inhouse/configs/dist/semantic-release/package"
+    },
+    "engines": {
+        "node": ">=24"
     },
     "madge": {
         "tsConfig": "./tsconfig.json"
