@@ -14,10 +14,10 @@ to:  <%= serviceName %>/package.json
         "start": "node dist/index.js",
         "semantic-release": "semantic-release -e @diia-inhouse/configs/dist/semantic-release/service-stage --debug --ci",
         "semantic-release-prod": "semantic-release -e @diia-inhouse/configs/dist/semantic-release/service-prod --debug --ci",
-        "lint": "oxlint && oxfmt --check . && buf format ./proto --diff --exit-code",
-        "lint-fix": "oxlint --fix && oxfmt . && buf format ./proto --write",
+        "lint": "oxlint && oxfmt --check . && diia-buf-lint",
+        "lint-fix": "oxlint --fix && oxfmt . && diia-buf-lint --fix",
         "lint:lockfile": "lockfile-lint --path package-lock.json --allowed-hosts registry.npmjs.org gitlab.diia.org.ua --validate-https",
-        "test": "npm run genproto -- --generateClient=true && tsc --project tests/tsconfig.json --noEmit && vitest run",
+        "test": "npm run genproto && tsc --project tests/tsconfig.json --noEmit && vitest run",
         "test:watch": "vitest watch",
         "test:coverage": "vitest run --coverage",
         <%if (h.isOptionSelected(selectedDependencies, 'database')) {%>
@@ -27,7 +27,8 @@ to:  <%= serviceName %>/package.json
         <%}%>
         "find-circulars": "madge --circular --extensions ts ./",
         "scaffold": "scaffold",
-        "genproto": "genproto --outputDir src/generated"
+        "genproto": "buf generate",
+        "proto:breaking": "diia-buf-breaking"
     },
     "keywords": [],
     "engines": {
