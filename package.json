@@ -1,10 +1,17 @@
 {
     "name": "@diia-inhouse/scaffold",
-    "version": "2.60.4",
-    "main": "dist/index.js",
-    "engines": {
-        "node": ">=22"
+    "version": "2.60.5",
+    "description": "Hygen-based CLI that scaffolds Diia services, packages and code templates",
+    "license": "SEE LICENCE IN LICENCE.md",
+    "author": "diia-team",
+    "repository": "https://github.com/diia-open-source/be-scaffold",
+    "bin": {
+        "scaffold": "dist/bin.js"
     },
+    "files": [
+        "dist"
+    ],
+    "main": "dist/index.js",
     "scripts": {
         "lint": "oxlint && oxfmt --check .",
         "lint-fix": "oxlint --fix && oxfmt .",
@@ -16,13 +23,6 @@
         "find-circulars": "madge --circular --extensions ts ./",
         "semantic-release": "semantic-release"
     },
-    "bin": {
-        "scaffold": "dist/bin.js"
-    },
-    "files": [
-        "dist"
-    ],
-    "author": "Diia",
     "dependencies": {
         "@diia-inhouse/types": "14.5.4",
         "chalk": "4.1.2",
@@ -33,18 +33,21 @@
     },
     "devDependencies": {
         "@diia-inhouse/configs": "7.2.2",
-        "@diia-inhouse/oxc-config": "3.2.0",
+        "@diia-inhouse/oxc-config": "4.0.3",
         "@types/lodash": "4.17.24",
         "@types/node": "25.3.3",
         "copyfiles": "2.4.1",
         "lockfile-lint": "4.14.1",
         "madge": "8.0.0",
-        "oxfmt": "0.63.0",
-        "oxlint": "1.78.0",
-        "oxlint-tsgolint": "7.0.2001",
+        "oxfmt": "0.72.0",
+        "oxlint": "1.87.0",
+        "oxlint-tsgolint": "7.0.2003",
         "rimraf": "6.1.3",
         "semantic-release": "24.2.3",
         "typescript": "5.9.3"
+    },
+    "commitlint": {
+        "extends": "@diia-inhouse/configs/dist/commitlint"
     },
     "release": {
         "extends": "@diia-inhouse/configs/dist/semantic-release/package",
@@ -52,12 +55,10 @@
             "main"
         ]
     },
-    "commitlint": {
-        "extends": "@diia-inhouse/configs/dist/commitlint"
+    "engines": {
+        "node": ">=24"
     },
     "madge": {
         "tsConfig": "./tsconfig.json"
-    },
-    "repository": "https://github.com/diia-open-source/be-scaffold",
-    "license": "SEE LICENCE IN LICENCE.md"
+    }
 }
