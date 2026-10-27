@@ -1,6 +1,6 @@
 {
     "name": "@diia-inhouse/scaffold",
-    "version": "2.60.13",
+    "version": "2.60.14",
     "description": "Hygen-based CLI that scaffolds Diia services, packages and code templates",
     "license": "SEE LICENCE IN LICENCE.md",
     "author": "diia-team",
@@ -24,7 +24,7 @@
         "semantic-release": "semantic-release"
     },
     "dependencies": {
-        "@diia-inhouse/types": "14.9.1",
+        "@diia-inhouse/types": "14.9.2",
         "chalk": "4.1.2",
         "enquirer": "2.4.1",
         "execa": "5.1.1",
