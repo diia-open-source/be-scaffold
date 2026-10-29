@@ -1,6 +1,6 @@
 {
     "name": "@diia-inhouse/scaffold",
-    "version": "2.60.14",
+    "version": "2.60.15",
     "description": "Hygen-based CLI that scaffolds Diia services, packages and code templates",
     "license": "SEE LICENCE IN LICENCE.md",
     "author": "diia-team",

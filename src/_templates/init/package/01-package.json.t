@@ -33,7 +33,6 @@ to:  <%= packageName %>/package.json
         "test": "tsc --project tests/tsconfig.json --noEmit && vitest run",
         "test:watch": "vitest watch",
         "test:coverage": "vitest run --coverage",
-        "find-circulars": "madge --circular --extensions ts ./",
         "lint:lockfile": "lockfile-lint --path package-lock.json --allowed-hosts registry.npmjs.org gitlab.diia.org.ua --validate-https"
     },
     "commitlint": {
@@ -44,8 +43,5 @@ to:  <%= packageName %>/package.json
     },
     "engines": {
         "node": ">=24"
-    },
-    "madge": {
-        "tsConfig": "./tsconfig.json"
     }
 }

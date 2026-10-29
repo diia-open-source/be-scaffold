@@ -30,7 +30,6 @@ to:  <%= serviceName %>/package.json
         "migrate": "npm run indexes:sync && sh -c 'tsx --tsconfig migrations/tsconfig.json node_modules/.bin/migrate-mongo $0 $1 -f migrate-mongo-config.ts'",
         "indexes:sync": "./node_modules/.bin/diia-db sync-indexes",
         <%_ } _%>
-        "find-circulars": "madge --circular --extensions ts ./",
         "scaffold": "scaffold",
         "genproto": "buf generate",
         "proto:breaking": "diia-buf-breaking"
@@ -40,8 +39,5 @@ to:  <%= serviceName %>/package.json
     },
     "engines": {
         "node": ">=24"
-    },
-    "madge": {
-        "tsConfig": "./tsconfig.json"
     }
 }

@@ -5,7 +5,6 @@ const CommonDevDeps = [
     '@vitest/coverage-v8',
     '@vitest/ui',
     'lockfile-lint',
-    'madge',
     'oxfmt',
     'oxlint',
     'oxlint-tsgolint',
