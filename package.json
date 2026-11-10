@@ -1,6 +1,6 @@
 {
     "name": "@diia-inhouse/scaffold",
-    "version": "2.60.24",
+    "version": "2.60.25",
     "description": "Hygen-based CLI that scaffolds Diia services, packages and code templates",
     "license": "SEE LICENCE IN LICENCE.md",
     "author": "diia-team",
@@ -20,7 +20,6 @@
         "clean:result": "rimraf generation-result",
         "cp:templates": "cd src && copyfiles _templates/**/*.t ../dist && copyfiles _sharedTemplates/**/*.t ../dist",
         "prepare": "npm run build",
-        "find-circulars": "madge --circular --extensions ts ./",
         "semantic-release": "semantic-release"
     },
     "dependencies": {
@@ -33,12 +32,11 @@
     },
     "devDependencies": {
         "@diia-inhouse/configs": "7.2.5",
-        "@diia-inhouse/oxc-config": "5.0.2",
+        "@diia-inhouse/oxc-config": "6.1.3",
         "@types/lodash": "4.17.24",
         "@types/node": "25.3.3",
         "copyfiles": "2.4.1",
         "lockfile-lint": "4.14.1",
-        "madge": "8.0.0",
         "oxfmt": "0.72.0",
         "oxlint": "1.87.0",
         "oxlint-tsgolint": "7.0.2003",
@@ -50,15 +48,9 @@
         "extends": "@diia-inhouse/configs/dist/commitlint"
     },
     "release": {
-        "extends": "@diia-inhouse/configs/dist/semantic-release/package",
-        "branches": [
-            "main"
-        ]
+        "extends": "@diia-inhouse/configs/dist/semantic-release/package"
     },
     "engines": {
         "node": ">=24"
-    },
-    "madge": {
-        "tsConfig": "./tsconfig.json"
     }
 }
