@@ -3,8 +3,6 @@ const CommonDevDeps = [
     '@diia-inhouse/oxc-config',
     '@diia-inhouse/test',
     '@vitest/coverage-v8',
-    '@vitest/ui',
-    'lockfile-lint',
     'oxfmt',
     'oxlint',
     'oxlint-tsgolint',
@@ -12,7 +10,6 @@ const CommonDevDeps = [
     'semantic-release',
     'typescript',
     'vitest',
-    'vitest-mock-extended',
 ] as const
 
 const PackageDevDeps = [...CommonDevDeps, 'tsdown'] as const
