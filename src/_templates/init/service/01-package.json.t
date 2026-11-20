@@ -14,7 +14,7 @@ to:  <%= serviceName %>/package.json
         "#*": "./dist/*"
     },
     "scripts": {
-        "build": "rimraf dist && npm run genproto && tsc",
+        "build": "diia-clean dist && npm run genproto && tsc",
         "start": "node dist/index.js",
         "dev": "diia-dev",
         "semantic-release": "semantic-release -e @diia-inhouse/configs/dist/semantic-release/service-stage --debug --ci",

@@ -6,7 +6,6 @@ const CommonDevDeps = [
     'oxfmt',
     'oxlint',
     'oxlint-tsgolint',
-    'rimraf',
     'semantic-release',
     'typescript',
     'vitest',

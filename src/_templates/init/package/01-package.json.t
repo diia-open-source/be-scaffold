@@ -24,7 +24,6 @@ to:  <%= packageName %>/package.json
         "./package.json": "./package.json"
     },
     "scripts": {
-        "prebuild": "rimraf dist",
         "build": "tsdown",
         "prepare": "npm run build",
         "semantic-release": "semantic-release",
