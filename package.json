@@ -1,6 +1,6 @@
 {
     "name": "@diia-inhouse/scaffold",
-    "version": "2.61.0",
+    "version": "2.61.1",
     "description": "Hygen-based CLI that scaffolds Diia services, packages and code templates",
     "license": "SEE LICENCE IN LICENCE.md",
     "author": "diia-team",
@@ -31,7 +31,7 @@
     },
     "devDependencies": {
         "@diia-inhouse/configs": "7.4.0",
-        "@diia-inhouse/oxc-config": "6.2.0",
+        "@diia-inhouse/oxc-config": "6.2.1",
         "@types/lodash": "4.17.24",
         "@types/node": "25.3.3",
         "copyfiles": "2.4.1",
